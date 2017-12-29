@@ -1,0 +1,8 @@
+@keyframes goRight {
+    from {
+        left:70px;
+    }
+    to {
+        left:180px;
+    }
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="pt-pt">
+    
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=0.5">
+        
+        <meta charset="UTF-8" />
+        <title>SnakeRoad</title>
+        
+        <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+        <link href="css/normalize.css" rel="stylesheet" type="text/css" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link href="css/responsive/style_responsive.css" rel="stylesheet" type="text/css" />
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            jQuery(document).ready(function($) { 
+                $(".scroll").click(function(event){        
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop:$(this.hash).offset().top}, 600);
+               });
+            });
+        </script>
+        
+    </head>
+    
+    <body>
+        
+        <div id="container" class="container">
+            
+            <header>
+                
+                <div id="demo" class="demo showDemo">
+                    <a href="gameDemo/demo.html">
+                        <span>Experiment with a friend</span>
+                    </a>
+                </div>
+                
+                <div id="logOrReg" class="logOrReg vanish">
+                    <div id="containerLogOrReg" class="containerLogOrReg">
+                        
+                        <div id="login" class="login vanish">
+                            <div id="containerLogin" class="containerLogin">
+                                <div id="closeLogin" class="closeLogin">
+                                    <a id="closeLoginButton">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </div>
+
+                                <form>
+                                    <label for="userLogin">Email</label>
+                                    <input type="text" id="userLogin" class="userLogin"/>
+
+                                    <label for="passLogin">Password</label>
+                                    <input type="password" id="passLogin" class="passLogin"/>
+
+                                    <button id="buttonLogin" class="buttonlogin">Login</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div id="register" class="register vanish">
+                            <div id="containerRegister" class="containerRegister">
+                                <div id="closeRegister" class="closeRegister">
+                                    <a id="closeRegisterButton">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </div>
+
+                                <form>
+                                    <label for="userRegister">Username</label>
+                                    <input type="text" id="userRegister" class="userRegister"/>
+
+                                    <label for="passRegister">Password</label>
+                                    <input type="password" id="passRegister" class="passRegister"/>
+
+                                    <label for="passRegister">Repeat Password</label>
+                                    <input type="password" id="passRepeatRegister" class="passRepeatRegister"/>
+
+                                    <label for="emailRegister">Email</label>
+                                    <input type="text" id="emailRegister" class="emailRegister"/>
+
+                                    <button id="buttonRegister" class="buttonRegister">Register</button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="logoName logoFirstAnimation">
+                    <a href="#">
+                        <span class="snakeGreen">S</span>nake <span class="snakeGreen">R</span>oad
+                    </a>
+                </div>
+                
+                <nav>
+                    
+                    <!-- Primeira Bar -->
+                    <div id="bar" class="bar buttonFirstAnimation barNumberOne" style="z-index:999;">
+                        <div class="item item1">
+                            <a href="#" class="scroll arrowFirstAnimation">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="item item2">
+                            <a href="#">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="item item3">
+                            <a href="#">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="item item4">
+                            <a href="#sliderImg" class="scroll">
+                                <i class="fas fa-book"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="item item5">
+                            <a href="#developers" class="scroll">
+                                <i class="fas fa-users"></i>
+                            </a>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- Segunda Bar --->
+                    <div id="secondBar" class="secondBar" style="z-index:999;">
+                        <div class="item item1">
+                            <a href="#container" class="scroll">
+                                <i class="fas fa-home"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="item item2 secondItem2">
+                            <a href="#">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="item item3 secondItem3">
+                            <a href="#">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="item item4">
+                            <a href="#sliderImg" class="scroll">
+                                <i class="fas fa-book"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="item item5">
+                            <a href="#developers" class="scroll">
+                                <i class="fas fa-users"></i>
+                            </a>
+                        </div>
+                        
+                    </div>
+                    
+                </nav>
+            </header>
+            
+            <main>
+                
+                <section>
+                    <p> A completely <span class="snakeGreen greenAnimation">indie game</span> </p>
+                </section>
+                
+                <section id="rules" class="rules">
+                    
+                    <div id="slider" class="slider">
+                        
+                        <div id="sliderImg" class="sliderImg">
+                            <div id="sliderImgNum1" class="sliderImgNum1"></div>
+                            <div id="sliderImgNum2" class="sliderImgNum2 vanish"></div>
+                            <div id="sliderImgNum3" class="sliderImgNum3 vanish"></div>
+                        </div>
+                        
+                        <div id="sliderButtons" class="sliderButtons">
+                            <div id="buttonsPosition" class="buttonsPositions">
+                                <div id="sliderButtonNum1" class="sliderButtonNum1">
+                                    <a class="arrowLeft">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
+
+                                <div id="sliderButtonNum2" class="sliderButtonNum2">
+                                    <a class="arrowRight">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </section>
+                
+                <section id="developers" class="developers">
+                    
+                    <div class="developersPerfil">
+                        
+                        <div class="dev devNum1">
+                            
+                            <div class="devImg devImg1">
+                                <div class="inceptionImg">
+                                    <span>dev1</span>
+                                </div>
+                            </div>
+                            
+                            <div class="devName">
+                                <div class="devName1">
+                                    <span>Rodrigo Costa</span>
+                                </div>
+                            </div>
+                            
+                            <div class="devPersonalData">
+                                
+                                <ul>
+                                    <li class="devPosition">
+                                        Position: <span>Web Developer</span>
+                                    </li>
+                                    
+                                    <li class="devSkills">
+                                        Skills: <span>HTML, CSS, JS...</span>
+                                    </li>
+                                    
+                                    <li class="devSocial">
+                                        Social:
+                                        <a href="https://github.com/DieTower" target="_blank" class="githubColor">
+                                            <i class="fab fa-github-square"></i>
+                                        </a>
+                                        
+                                        <a href="https://www.facebook.com/profile.php?id=100000435016720" target="_blank" class="facebookColor">
+                                            <i class="fab fa-facebook-square"></i>
+                                        </a>
+                                        
+                                        <a href="https://www.instagram.com/rnc_1996/?hl=pt" target="_blank" class="instagramColor">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        <div class="dev devNum2 vanish2">
+                            
+                            <div class="devImg devImg2">
+                                <div class="inceptionImg">
+                                    <span>dev1</span>
+                                </div>
+                            </div>
+                            
+                            <div class="devName">
+                                <div class="devName2">
+                                    <span>Martim Ferreira</span>
+                                </div>
+                            </div>
+                            
+                            <div class="devPersonalData">
+                                
+                                <ul>
+                                    <li class="devPosition">
+                                        Position: <span>Java Developer</span>
+                                    </li>
+                                    
+                                    <li class="devSkills">
+                                        Skills: <span>Java, SQL, PHP...</span>
+                                    </li>
+                                    
+                                    <li class="devSocial">
+                                        Social:
+                                        <a href="#" target="_blank" class="discordColor">
+                                            <i class="fab fa-discord"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        <div class="dev devNum3 vanish2">
+                            
+                            <div class="devImg devImg3">
+                                <div class="inceptionImg">
+                                    <span>dev1</span>
+                                </div>
+                            </div>
+                            
+                            <div class="devName">
+                                <div class="devName3">
+                                    <span>Iuri Frances</span>
+                                </div>
+                            </div>
+                            
+                            <div class="devPersonalData">
+                                
+                                <ul>
+                                    <li class="devPosition">
+                                        Position: <span>PHP Developer</span>
+                                    </li>
+                                    
+                                    <li class="devSkills">
+                                        Skills: <span>PHP, Java, MySQL...</span>
+                                    </li>
+                                    
+                                    <li class="devSocial">
+                                        Social:
+                                        <a href="#" target="_blank" class="facebookColor">
+                                            <i class="fab fa-facebook-square"></i>
+                                        </a>
+                                        
+                                        <a href="#" target="_blank" class="discordColor">
+                                            <i class="fab fa-discord"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </section>
+                
+            </main>
+            
+            <div class="perfilArrows">
+                <div id="arrowPerfilButton1">
+                    <a> <i class="fas fa-arrow-left"></i> </a>
+                </div>
+                
+                <div id="arrowPerfilButton2">
+                    <a> <i class="fas fa-arrow-right"></i> </a>
+                </div>
+            </div>
+            
+            <footer>
+                <div>
+                    Website created by <a href="https://github.com/DieTower" target="_blank">Rodrigo Costa</a>
+                </div>
+            </footer>
+            
+        </div>
+        
+        <script src="js/script_switchblade.js" type="text/javascript"></script>
+        <script src="js/script_firstButton.js" type="text/javascript"></script>
+        <script src="js/script_nav.js" type="text/javascript"></script>
+        <script src="js/script_slider.js" type="text/javascript"></script>
+        <script src="js/script_perfil.js" type="text/javascript"></script>
+        <script src="js/script.js" type="text/javascript"></script>
+    </body>
+    
+</html>

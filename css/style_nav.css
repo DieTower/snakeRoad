@@ -1,0 +1,242 @@
+/* Animation */
+
+/* first Animation */
+@keyframes logoFirstAnimation {
+    from { transform:translateY(-900px); }
+    to { transform:translateY(0px); }
+}
+
+.logoFirstAnimation {
+    animation-name:logoFirstAnimation;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+}
+
+@keyframes arrowFirstAnimation {
+    from { transform:rotate(90deg); }
+    to { transform:rotate(0deg); }
+}
+
+.arrowFirstAnimation {
+    animation-name:arrowFirstAnimation;
+    animation-duration:1.5s;
+    animation-fill-mode:forwards;
+}
+
+/* bar Animation */
+@keyframes forRight {
+    from { transform:translateX(-300px); }
+    to { transform:translateX(0px); }
+}
+
+.forRightAnimation {
+    animation-name:forRight;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+}
+
+@keyframes forLeft {
+    from { transform:translateX(0px); }
+    to { transform:translateX(-300px); }
+}
+
+.forLeftAnimation {
+    animation-name:forLeft;
+    animation-duration:1s;
+    animation-fill-mode:backwards;
+}
+
+
+/* animação da seta */
+@keyframes arrowRightForUp {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(-90deg); }
+}
+
+/* direita para cima */
+.arrowRightForUpAnimation {
+    animation-name:arrowRightForUp;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+}
+
+@keyframes arrowUpForLeft {
+    from { transform:rotate(-90deg); }
+    to { transform:rotate(-180deg); }
+}
+
+/* cima para esquerda */
+.arrowUpForLeftAnimation {
+    animation-name:arrowUpForLeft;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+}
+
+@keyframes arrowLeftForUp {
+    from { transform:rotate(-180deg); }
+    to { transform:rotate(-90deg); }
+}
+
+/* esquerda para cima */
+.arrowLeftForUpAnimation {
+    animation-name:arrowLeftForUp;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+}
+
+@keyframes arrowUpForRight {
+    from { transform:rotate(-90deg); }
+    to { transform:rotate(-0deg); }
+}
+
+/* cima para direita */
+.arrowUpForRightAnimation {
+    animation-name:arrowUpForRight;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+}
+
+@keyframes arrowCompleteForRight {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(-180deg); }
+}
+
+/* Dá uma volta de 180 graus para a esquerda */
+.arrowCompleteForLeftAnimation {
+    animation-name:arrowCompleteForRight;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+}
+
+@keyframes arrowCompleteForLeft {
+    from { transform:rotate(-180deg); }
+    to { transform:rotate(0deg); }
+}
+
+/* Dá uma volta de 180 graus para a direita */
+.arrowCompleteForRightAnimation {
+    animation-name:arrowCompleteForLeft;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+}
+
+
+nav {
+    grid-column:1/2;
+    grid-row:1/4;
+    
+    display:flex;
+    justify-content:center;
+}
+
+.bar {
+    position:fixed;
+    
+    transform:translateY(-200px);
+    
+    margin-top:35px;
+    margin-bottom:35px;
+    
+    width:100px;
+    height:auto;
+}
+
+.bar .item {
+    height:100px;
+    
+    margin-bottom:5px;
+    border-radius:4px;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.bar .item a {
+    width:100%;
+    height:100%;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    font-size:2em;
+    color:#ffffff;
+}
+
+.bar .item i {
+    color:#ffffff;
+}
+
+
+/* item1 */
+.bar .item1 {
+    cursor:pointer;
+    background-color:#000000;
+}
+
+.bar .item1 a {
+    transform:rotate(90deg);
+}
+
+/* item2 */
+.bar .item2 {
+    background-color:rgb(0,176,80);
+    transform:translateX(-300px);
+}
+
+.item2.forRightAnimation {
+    animation-delay:0s;
+}
+
+.item2.forLeftAnimation {
+    animation-delay:0.6s;
+}
+
+
+/* item3 */
+.bar .item3 {
+    background-color:rgb(255,192,0);
+    transform:translateX(-300px);
+}
+
+.item3.forRightAnimation {
+    animation-delay:0.2s;
+}
+
+.item3.forLeftAnimation {
+    animation-delay:0.4s;
+}
+
+
+/* item4 */
+.bar .item4 {
+    background-color:rgb(255,0,0);
+    transform:translateX(-300px);
+}
+
+.item4.forRightAnimation {
+    animation-delay:0.4s;
+}
+
+.item4.forLeftAnimation {
+    animation-delay:0.2s;
+}
+
+
+/* item5 */
+.bar .item5 {
+    background-color:rgb(0,176,240);
+    transform:translateX(-300px);
+}
+
+.item5.forRightAnimation {
+    animation-delay:0.6s;
+}
+
+.item5.forLeftAnimation {
+    animation-delay:0s;
+}
+
+
+

@@ -1,0 +1,8 @@
+main {
+    grid-column:1/4;
+    grid-row:4/5;
+    /*background-color:blue;*/
+    
+    display:grid;
+    grid-template-rows:30% 40% 30%;
+}

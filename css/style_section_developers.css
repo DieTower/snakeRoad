@@ -1,0 +1,220 @@
+.developersPerfil {
+    grid-column:2/3;
+    grid-row:2/3;
+    
+    display:grid;
+    grid-template-columns:30% 5% 30% 5% 30%;
+    grid-template-rows:100%;
+}
+
+.developersPerfil .dev {
+    background-color:#ffffff;
+    
+    border-radius:4px;
+    box-shadow:0px 0px 0px #000000;
+    
+    transition-property:'border';
+    transition-duration:0.5s;
+    
+    display:grid;
+    grid-template-columns:25% 25% 25% 25%;
+    grid-template-rows:40% 10% 10% 40%;
+}
+
+.developersPerfil .dev:hover {
+    border-radius:4px;
+}
+
+.dev .devImg {
+    grid-column:1/5;
+    grid-row:1/3;
+    
+    overflow:hidden;
+    
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
+}
+
+.devName {
+    grid-column:2/4;
+    grid-row:2/4;
+    
+    z-index:900;
+    visibility:hidden;
+    
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.devName div:nth-child(1) {
+    visibility:visible;
+    cursor:pointer;
+    
+    width:100%;
+    height:70px;
+    
+    border-radius:4px;
+    
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    
+    font-size:16px;
+}
+
+.devName div:nth-child(1) span {
+    font-family:'Inconsolata';
+    font-weight:400;
+    font-size:1.8em;
+    color:#ffffff;
+}
+
+.devName1 {
+    background-color:rgb(0,176,80);
+}
+
+.devName2 {
+    background-color:rgb(255,192,0);
+}
+
+.devName3 {
+    background-color:rgb(255,0,0);
+}
+
+.devName4 {
+    background-color:rgb(0,176,240);
+}
+
+.inceptionImg {
+    width:100%;
+    height:100%;
+    
+    transition-property:'transform';
+    transition-duration:0.5s;
+}
+
+.devImg1 {
+    background-image:url('../img/user1.png');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
+}
+
+.devImg2 {
+    background-image:url('../img/user2.jpg');
+    background-repeat:no-repeat;
+    background-position:40% 20px;
+    background-size:cover;
+}
+
+.devImg3 {
+    background-image:url('../img/user3.jpg');
+    background-repeat:no-repeat;
+    background-position:-5px 20px;
+    background-size:cover;
+}
+
+.developersPerfil .dev:hover .inceptionImg {
+    transform: scale(1.2);
+}
+
+.devImg .inceptionImg span {
+    visibility:hidden;
+}
+
+.dev .devPersonalData {
+    grid-column:1/5;
+    grid-row:3/5;
+    
+    border-radius:8px;
+}
+
+.devPersonalData ul {
+    width:100%;
+    height:100%;
+    
+    margin:0px;
+    padding:0px;
+    list-style:none;
+    cursor:default;
+    
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    
+    font-size:16px;
+}
+
+.devPersonalData ul li:nth-child(1){
+    margin-top:0% !important;
+}
+
+.devPersonalData ul li {
+    padding:10px;
+    
+    margin-left:10%;
+    margin-top:5%;
+    
+    font-family:'Inconsolata';
+    font-weight:400;
+    font-size:2em;
+    
+    border-bottom:1px solid #f1f1f1;
+}
+
+.devPersonalData ul li::selection, .devPersonalData ul li span::selection, .devName div span::selection {
+    background-color:transparent;
+}
+
+
+.devPersonalData ul li:nth-child(3) a {
+    font-family:default;
+    color:#000000;
+    font-size:1em;
+}
+
+.githubColor {
+    color:#333333 !important;
+}
+
+.facebookColor {
+    color:#3b5998 !important;
+}
+
+.discordColor {
+    color:#7289da !important;
+}
+
+.instagramColor {
+    color:#fb3958 !important;
+}
+
+.developersPerfil .devNum1 {
+    grid-column:1/2;
+    grid-row:1/2;
+}
+
+.developersPerfil .devNum1:hover {
+    box-shadow:-5px 5px 30px #000000;
+}
+
+.developersPerfil .devNum2 {
+    grid-column:3/4;
+    grid-row:1/2;
+}
+
+.developersPerfil .devNum2:hover {
+    box-shadow:0px 5px 30px #000000;
+}
+
+.developersPerfil .devNum3 {
+    grid-column:5/6;
+    grid-row:1/2;
+}
+
+.developersPerfil .devNum3:hover {
+    box-shadow:5px 5px 30px #000000;
+}

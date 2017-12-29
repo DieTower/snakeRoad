@@ -1,0 +1,299 @@
+.bar {
+    background-color:;
+    padding:50px !important;
+}
+
+.table_class {
+    font-size:16px;
+    padding:1px;
+    
+    grid-column:2/20;
+    grid-row:2/17;
+    
+    display:grid;
+    grid-template-columns:repeat(10,10%);
+    grid-template-rows:repeat(8,12%);
+    grid-gap:0px 0px;
+}
+
+.gridHouse {
+    position:relative;
+    
+    font-size:2em;
+    border:2px solid black;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    background-color:#ffffff;
+    
+    transition-property:all;
+    transition-duration:0.2s;
+}
+
+.gridHouse span::selection {
+    background-color:transparent;
+}
+
+.removeLeftBorder {
+    border-left:0px;
+}
+
+.removeTopBorder {
+    border-top:0px;
+}
+
+.removeBottomBorder {
+    border-bottom:0px;
+}
+
+.removeRightBorder {
+    border-right:0px;
+}
+
+.lastGridHouse {
+    color:white !important;
+    background-color:#000000;
+}
+
+.gridHouse44_class {
+    grid-column:1/2;
+    grid-row:1/2;
+    
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
+}
+
+.gridHouse43_class {
+    grid-column:1/2;
+    grid-row:2/3;
+    
+    border-bottom-left-radius:4px;
+}
+
+.gridHouse42_class {
+    grid-column:2/3;
+    grid-row:2/3;
+}
+
+.gridHouse41_class {
+    grid-column:3/4;
+    grid-row:2/3;
+}
+
+.gridHouse40_class {
+    grid-column:4/5;
+    grid-row:2/3;
+}
+
+.gridHouse39_class {
+    grid-column:5/6;
+    grid-row:2/3;
+}
+
+.gridHouse38_class {
+    grid-column:6/7;
+    grid-row:2/3;
+}
+
+.gridHouse37_class {
+    grid-column:7/8;
+    grid-row:2/3;
+}
+
+.gridHouse36_class {
+    grid-column:8/9;
+    grid-row:2/3;
+}
+
+.gridHouse35_class {
+    grid-column:9/10;
+    grid-row:2/3;
+}
+
+.gridHouse34_class {
+    grid-column:10/11;
+    grid-row:2/3;
+    
+    border-top-right-radius:4px;
+}
+
+
+.gridHouse33_class {
+    grid-column:10/11;
+    grid-row:3/4;
+}
+
+.gridHouse32_class {
+    grid-column:10/11;
+    grid-row:4/5;
+    
+    border-bottom-right-radius:4px;
+}
+
+.gridHouse31_class {
+    grid-column:9/10;
+    grid-row:4/5;
+}
+
+.gridHouse30_class {
+    grid-column:8/9;
+    grid-row:4/5;
+}
+
+.gridHouse29_class {
+    grid-column:7/8;
+    grid-row:4/5;
+}
+
+.gridHouse28_class {
+    grid-column:6/7;
+    grid-row:4/5;
+}
+
+.gridHouse27_class {
+    grid-column:5/6;
+    grid-row:4/5;
+}
+
+.gridHouse26_class {
+    grid-column:4/5;
+    grid-row:4/5;
+}
+
+.gridHouse25_class {
+    grid-column:3/4;
+    grid-row:4/5;
+}
+
+.gridHouse24_class {
+    grid-column:2/3;
+    grid-row:4/5;
+}
+
+.gridHouse23_class {
+    grid-column:1/2;
+    grid-row:4/5;
+    
+    border-top-left-radius:4px;
+}
+
+.gridHouse22_class {
+    grid-column:1/2;
+    grid-row:5/6;
+}
+
+.gridHouse21_class {
+    grid-column:1/2;
+    grid-row:6/7;
+    
+    border-bottom-left-radius:4px;
+}
+
+.gridHouse20_class {
+    grid-column:2/3;
+    grid-row:6/7;
+}
+
+.gridHouse19_class {
+    grid-column:3/4;
+    grid-row:6/7;
+}
+
+.gridHouse18_class {
+    grid-column:4/5;
+    grid-row:6/7;
+}
+
+.gridHouse17_class {
+    grid-column:5/6;
+    grid-row:6/7;
+}
+
+.gridHouse16_class {
+    grid-column:6/7;
+    grid-row:6/7;
+}
+
+.gridHouse15_class {
+    grid-column:7/8;
+    grid-row:6/7;
+}
+
+.gridHouse14_class {
+    grid-column:8/9;
+    grid-row:6/7;
+}
+
+.gridHouse13_class {
+    grid-column:9/10;
+    grid-row:6/7;
+}
+
+.gridHouse12_class {
+    grid-column:10/11;
+    grid-row:6/7;
+    
+    border-top-right-radius:4px;
+}
+
+.gridHouse11_class {
+    grid-column:10/11;
+    grid-row:7/8;
+}
+
+.gridHouse10_class {
+    grid-column:10/11;
+    grid-row:8/9;
+    
+    border-bottom-right-radius:4px;
+}
+
+.gridHouse9_class {
+    grid-column:9/10;
+    grid-row:8/9;
+}
+
+.gridHouse8_class {
+    grid-column:8/9;
+    grid-row:8/9;
+}
+
+.gridHouse7_class {
+    grid-column:7/8;
+    grid-row:8/9;
+}
+
+.gridHouse6_class {
+    grid-column:6/7;
+    grid-row:8/9;
+}
+
+.gridHouse5_class {
+    grid-column:5/6;
+    grid-row:8/9;
+}
+
+.gridHouse4_class {
+    grid-column:4/5;
+    grid-row:8/9;
+}
+
+.gridHouse3_class {
+    grid-column:3/4;
+    grid-row:8/9;
+}
+
+.gridHouse2_class {
+    grid-column:2/3;
+    grid-row:8/9;
+}
+
+.gridHouse1_class {
+    grid-column:1/2;
+    grid-row:8/9;
+    
+    border-top-left-radius:4px;
+    border-bottom-left-radius:4px;
+}

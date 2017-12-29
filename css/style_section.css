@@ -1,0 +1,66 @@
+@keyframes greenEffect {
+    from { color:rgb(0,176,80); }
+    to { color:limegreen; }
+}
+
+.greenAnimation {
+    animation-name:greenEffect;
+    animation-duration:1.5s;
+    animation-direction:alternate;
+    animation-iteration-count:infinite;
+}
+
+main section:nth-child(1) {
+    grid-row:1/2;
+    background-color:blue;
+    background-image:url("../img/gameTest.JPG");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+    
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+main section:nth-child(1) p {
+    color:#ffffff;
+    font-family:'Inconsolata';
+    font-weight:bold;
+    font-size:4em;
+    text-shadow:5px 5px 10px #000000;
+    
+    cursor:default;
+    
+    padding:10px;
+    cursor:default;
+    
+    transition-property:'text-shadow';
+    transition-duration:0.3s;
+}
+
+main section:nth-child(1) p::selection, main section:nth-child(1) p span::selection {
+    background-color:transparent;
+}
+
+main section:nth-child(1) p:hover {
+    text-shadow:5px 5px 20px #000000;
+}
+
+main section:nth-child(2) {
+    grid-row:2/3;
+    
+    display:grid;
+    grid-template-columns:5% 90% 5%;
+}
+
+main section:nth-child(3) {
+    grid-row:3/4;
+    
+    background-color:#f1f1f1;
+    
+    display:grid;
+    grid-template-columns:5% 90% 5%;
+    grid-template-rows:5% 90% 5%;
+}

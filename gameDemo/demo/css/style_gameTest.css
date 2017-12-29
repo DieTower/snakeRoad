@@ -1,0 +1,237 @@
+/* keyframes */
+@keyframes down {
+    from{
+        top:0px;
+    }
+    
+    to{
+        top:1000px;
+    }
+}
+
+@keyframes rise {
+    from{
+        top:1000px;
+    }
+    
+    to{
+        top:0px;
+        visibility:visible;
+    }
+}
+
+@keyframes forLeft {
+    from{
+        right:-1000px;
+    }
+    
+    to{
+        right:0px;
+        visibility:visible;
+    }
+}
+
+@keyframes forRight {
+    from{
+        right:0px;
+    }
+    
+    to{
+        right:-1000px;
+        visibility:visible;
+    }
+}
+
+/* Class's de animações */
+.down_class {
+    animation-name:down;
+    animation-duration:2s;
+    animation-delay:0s;
+    animation-fill-mode:forwards;
+}
+
+.rise_class {
+    animation-name:rise;
+    animation-duration:2s;
+    animation-delay:0.5s;
+    animation-fill-mode:backwards;
+}
+
+.forLeft_class {
+    animation:forLeft;
+    animation-duration:2s;
+    animation-delay:0.5s;
+    animation-fill-mode:forwards;
+}
+
+.forRight_class {
+    animation:forRight;
+    animation-duration:2s;
+    animation-delay:0s;
+    animation-fill-mode:forwards;
+}
+
+/* Caracteristicas identicas ao painel original só que sem o grid */
+.testPanel_class {
+    position:relative;
+    
+    grid-column:2/6;
+    grid-row:2/6;
+    
+    border:3px solid black;
+    border-radius:5px;
+    background-color:#ffffff;
+    visibility:hidden;
+    
+    padding:30px;
+}
+
+/* Botão para chamar a tabela de testes */
+.callForAnotherTable_class {
+    z-index:999;
+    
+    position:absolute;
+    top:20px;
+    right:30px;
+    
+    width:50px;
+    height:40px;
+    
+    border:0px solid black;
+    cursor:pointer;
+}
+
+/* Class universal para todas as barras dentro do botão */
+.bBar_class {
+    width:100%;
+    height:6px;
+    background-color:black;
+    
+    position:relative;
+}
+
+.b1_class {
+    top:0px;
+}
+
+.b2_class {
+    top:10px;
+}
+
+.b3_class {
+    top:20px;
+}
+
+
+/* Primeira animação */
+@keyframes b1_n45d {
+    from {
+        top:0px;
+        transform: rotate(0deg);
+    }
+    
+    to {
+        top:16px;
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes b1Reverse_n45d {
+    from {
+        top:16px;
+        transform: rotate(-45deg);
+    }
+    
+    to {
+        top:0px;
+        transform: rotate(0deg);
+    }
+}
+
+.animation_b1_class {
+    animation-name:b1_n45d;
+    animation-duration:1s;
+    animation-delay:0s;
+    animation-fill-mode:forwards;
+}
+
+.animationReverse_b1_class {
+    animation-name:b1Reverse_n45d;
+    animation-duration:1s;
+    animation-delay:0s;
+    animation-fill-mode:forwards;
+}
+
+/* Segunda animação */
+@keyframes b2_n45d {
+    from {
+        transform: rotate(0deg);
+    }
+    
+    to {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes b2Reverse_n45d {
+    from {
+        transform: rotate(45deg);
+    }
+    
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.animation_b2_class {
+    animation-name:b2_n45d;
+    animation-duration:1s;
+    animation-delay:0s;
+    animation-fill-mode:forwards;
+}
+
+.animationReverse_b2_class {
+    animation-name:b2Reverse_n45d;
+    animation-duration:1s;
+    animation-delay:0s;
+    animation-fill-mode:forwards;
+}
+
+/* Terceira animação */
+@keyframes b3_n45d {
+    from {
+        top:20px;
+        transform: rotate(0deg);
+    }
+    
+    to {
+        top:4px;
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes b3Reverse_n45d {
+    from {
+        top:4px;
+        transform: rotate(45deg);
+    }
+    
+    to {
+        top:20px;
+        transform: rotate(0deg);
+    }
+}
+
+.animation_b3_class {
+    animation-name:b3_n45d;
+    animation-duration:1s;
+    animation-delay:0s;
+    animation-fill-mode:forwards;
+}
+
+.animationReverse_b3_class {
+    animation-name:b3Reverse_n45d;
+    animation-duration:1s;
+    animation-delay:0s;
+    animation-fill-mode:forwards;
+}

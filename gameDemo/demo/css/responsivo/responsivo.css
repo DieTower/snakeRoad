@@ -1,0 +1,32 @@
+@import url("responsivo_position.css");
+
+@media only screen and (max-width:1500px) {
+    
+    .gridHouse {
+        font-size:1.5em;
+    }
+    
+    .playerType_class span {
+        font-size:1.4em;
+    }
+    
+    .otherPlayerLife_class .eLife_class span {
+        padding:5px;
+        margin-left:10px;
+        font-size:1.4em;
+    }
+    
+    .endPanel_class .buttonEndPhase_class {
+        font-size:2em;
+    }
+    
+}
+
+@media only screen and (max-height:900px) {
+    
+    .endPanel_class .buttonEndPhase_class {
+        padding:13px;
+        font-size:2.3em;
+    }
+    
+}

@@ -1,0 +1,334 @@
+.panel_class {
+    position:relative;
+    
+    padding:20px;
+    
+    grid-column:2/6;
+    grid-row:2/6;
+    
+    border:3px solid black;
+    border-radius:5px;
+    background-color:#ffffff;
+    
+    display:grid;
+    grid-template-columns:5% 90% 5%;
+    grid-template-rows:5% 20% 55% 15% 5%;
+}
+
+.panel_class span::selection, .panel_class a::selection, .panel_class p::selection, button::selection {
+    background-color:transparent;
+}
+
+.playerStatus_class {
+    grid-column:2/3;
+    grid-row:2/3;
+    
+    display:grid;
+    grid-template-columns:30% 3% 67%;
+    grid-template-rows:45% 7% 48%;
+}
+
+.playerType_class {
+    grid-column:1/2;
+    grid-row:1/2;
+    
+    border-radius:3px;
+    background-color:rgb(0,176,80);
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.playerType_class span {
+    font-family:'Berkshire Swash';
+    font-weight:400;
+    font-size:1.8em;
+    color:#ffffff;
+    
+    cursor:default;
+    
+    transition-property:all;
+    transition-duration:0.3s;
+}
+
+.otherPlayerLife_class {
+    grid-column:3/4;
+    grid-row:1/2;
+}
+
+.otherPlayerLife_class .eLife_class {
+    width:100%;
+    height:100%;
+    border:2px solid rgb(0,176,240);
+    border-radius:3px;
+    Background-color:white;
+    
+    display:flex;
+    align-items:center;
+}
+
+.otherPlayerLife_class .eLife_class span {
+    cursor:default;
+    transition-property:all;
+    transition-duration:0.3s;
+}
+
+.otherPlayerLife_class .eLife_class span:nth-child(1) {
+    padding:5px;
+    margin-left:14px;
+    font-size:1.8em;
+    font-family:'Berkshire Swash';
+    font-weight:400;
+}
+
+.otherPlayerLife_class .eLife_class span:nth-child(2) {
+    padding:5px;
+    margin-left:14px;
+    margin-top:5px;
+    font-size:1.8em;
+    font-family:'Inconsolata';
+    font-weight:400;
+}
+
+.yourLife_class {
+    grid-column:1/4;
+    grid-row:3/4;
+    border:2px solid red;
+    border-radius:3px;
+}
+
+.yourLife_class .yLife_class {
+    width:100%;
+    height:104%;
+    
+    background-color:red;
+    
+    transition-property:all;
+    transition-duration:1s;
+    
+    display:flex;
+    align-items:center;
+}
+
+.yourLife_class .yLife_class span.part1 {
+    padding:10px;
+    margin-left:10px;
+    
+    color:#ffffff;
+    font-size:2em;
+    font-family:'Inconsolata';
+    font-weight:700;
+    
+    cursor:default;
+}
+
+.yourLife_class .yLife_class span.percentagem {
+    margin-left:5px;
+}
+
+/* Painel de cartas */
+.cardsPanel_class {
+    grid-column:2/3;
+    grid-row:3/4;
+    
+    display:grid;
+    grid-template-columns:100%;
+    grid-template-rows:4% 44% 4% 44% 4%;
+}
+
+/* Container com ou sem borda das duas filas de cartas */
+.cardsPart_class {
+    grid-column:1/2;
+    grid-row:2/5;
+}
+
+/* Pelo menos um dos fomatos deve coexistir com o "cardsPartOne" e todos os formatos conterem o mesmo "FormatNum" dos pais e filhos */
+.cPartFormatNum1 {
+    border:2px solid rgb(255,192,0);
+    border-radius:3px;
+    
+    display:grid;
+    grid-template-columns:2% 96% 2%;
+    grid-template-rows:2% 47% 2% 47% 2%;
+}
+
+.cPartFormatNum2 {
+    display:grid;
+    grid-template-columns:100%;
+    grid-template-rows:49% 2% 49%;
+}
+
+/* Primeira coluna de cartas */
+.cardsPartOne_class {
+    display:grid;
+    grid-template-columns:23.5% 2% 23.5% 2% 23.5% 2% 23.5%;
+    grid-template-rows:100%;
+}
+
+/* Pelo menos um dos fomatos deve coexistir com o "cardsPartOne" e todos os formatos conterem o mesmo "FormatNum" dos pais e filhos */
+.partOneFormatNum1 { grid-column:2/3; grid-row:2/3; }
+.partOneFormatNum2 { grid-column:1/2; grid-row:1/2; }
+
+/*Cartas e as suas correspetivas cordenadas na primeira coluna*/
+.cardOne_class { grid-column:1/2; grid-row:1/2; }
+.cardTwo_class { grid-column:3/4; grid-row:1/2; }
+.cardThree_class { grid-column:5/6; grid-row:1/2; }
+.cardFour_class { grid-column:7/8; grid-row:1/2; }
+
+/* Segunda coluna de cartas */
+.cardsPartTwo_class {
+    display:grid;
+    grid-template-columns:23.5% 2% 23.5% 2% 23.5% 2% 23.5%;
+    grid-template-rows:100%;
+}
+
+/* Pelo menos um dos fomatos deve coexistir com o "cardsPartTwo" e todos os formatos conterem o mesmo "FormatNum" dos pais e filhos */
+.partTwoFormatNum1 { grid-column:2/3; grid-row:4/5; }
+.partTwoFormatNum2 { grid-column:1/2; grid-row:3/4; }
+
+/*Cartas e as suas correspetivas cordenadas na segunda coluna*/
+.cardFive_class { grid-column:1/2; grid-row:1/2; }
+.cardSix_class { grid-column:3/4; grid-row:1/2; }
+.cardSeven_class { grid-column:5/6; grid-row:1/2; }
+.cardEight_class { grid-column:7/8; grid-row:1/2; }
+
+/* Class universal de formatação das cartas */
+.card_class {
+    border:2px solid #000000;
+    border-radius:3px;
+    
+    display:flex;
+    flex-direction:column;
+}
+
+.card_class .cardImg_class {
+    grid-column:1/2;
+    grid-row:1/2;
+    border-bottom:2px solid black;
+    
+    height:50%;
+    
+    background-image:url("../img/default-img.gif");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+}
+
+.card_class .cardImg_class span {
+    visibility:hidden;
+}
+
+.card_class .cardText_class {
+    font-family:'Inconsolata';
+    
+    height:50%;
+    margin:4px;
+    margin-left:5px;
+    
+    word-wrap:break-word;
+    overflow:auto;
+}
+
+.card_class:hover, .card_class:hover .cardImg_class {
+    cursor:pointer;
+    border-color:rgb(255,192,0);
+}
+
+.endPanel_class {
+    grid-column:2/3;
+    grid-row:4/5;
+    
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+}
+
+.endPanel_class .buttonEndPhase_class {
+    font-size:2em;
+    font-family:'Berkshire Swash';
+    color:#ffffff;
+    
+    border:2px solid #000000;
+    border-radius:4px;
+    padding:20px;
+    
+    cursor:pointer;
+    background-color:#000000;
+    
+    transition-property:padding,background-color,font-size;
+    transition-duration:0.3s;
+    transition-delay:none;
+}
+
+.endPanel_class .buttonEndPhase_class:hover {
+    padding:22px;
+    font-size:2.2em;
+    border:2px solid #000000;
+    background-color:#000000;
+}
+
+.endPanel_class .buttonEndPhase_class:active {
+    padding:20px;
+    
+    border:2px solid #000000;
+    Background-color:#ffffff;
+    color:#000000;
+}
+
+.endPanel_class .buttonEndPhase_class:focus {
+    outline:none;
+}
+
+
+
+/* Botão de retorno */
+.demo {
+    z-index:1100 !important;
+    
+    width:100px;
+    height:90px;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.demo a {    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    width:70px;
+    height:80px;
+    
+    border-radius:4px;
+    
+    font-size:16px;
+    background-color:rgb(0,176,80);
+    box-shadow:0px 0px 0px #000000;
+    
+    color:#ffffff;
+    
+    transition-property:'width','height','box-shadow';
+    transition-duration:0.2s;
+}
+
+.demo a:hover {
+    width:80px;
+    height:90px;
+    font-size:18px;
+}
+
+.demo a p {
+    transform:rotate(-90deg);
+    font-size:3em;
+    
+    width:40px;
+    height:60px;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}

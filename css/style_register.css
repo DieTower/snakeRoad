@@ -1,0 +1,136 @@
+/*
+#logOrReg {
+    position:fixed;
+    top:0px;
+    left:0px;
+    
+    grid-row:2/3;
+    grid-column:2/3;
+    
+    z-index:1000;
+    
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.5);
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+*/
+
+#containerRegister {
+    z-index:1050;
+    
+    transform:translateY(-200%);
+    
+    width:500px;
+    height:495px;
+    background-color:#f1f1f1;
+    
+    border-radius:4px;
+    
+    display:grid;
+    grid-template-columns:100%;
+    grid-template-rows:65px auto;
+}
+
+#containerRegister .closeRegister {
+    grid-row:1/2;
+    
+    padding:0px 10px;
+    margin:5px 15px;
+    border:1px solid #f1f1f1;
+    border-top:0px;
+    border-bottom:1px solid #616161;
+    
+    font-size:16px;
+    
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+}
+
+#containerRegister .closeRegister a {
+    color:#616161;
+    
+    font-size:2.3em;
+    margin-right:10px;
+    
+    cursor:pointer;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    transition-property:'color';
+    transition-duration:0.3s;
+}
+
+#containerRegister .closeRegister a:hover {
+    color:dimgrey;
+}
+
+#containerRegister form {
+    grid-row:2/3;
+    padding:10px;
+    margin:16px;
+    
+    font-family:'Inconsolata';
+    
+    display:flex;
+    flex-direction:column;
+    
+    font-size:16px;
+}
+
+#containerRegister form label {
+    margin-left:12px;
+    
+    color:#616161;
+    font-size:1.2em;
+}
+
+#containerRegister form input{
+    height:40px;
+    
+    border:1px solid #616161;
+    border-radius:3px;
+    
+    margin:0px 10px;
+    margin-bottom:18px;
+    
+    font-size:1.5em;
+    padding:0px 5px;
+}
+
+#containerRegister form input:focus {
+    outline-color:rgb(255,192,0);
+}
+
+#containerRegister form button {
+    margin-left:10px;
+    padding:0px;
+    
+    border:0px;
+    border-radius:3px;
+    
+    width:100px;
+    height:40px;
+    
+    font-family:'Inconsolata';
+    font-size:1.2em;
+    
+    color:#f1f1f1;
+    background-color:rgb(255,192,0);
+    box-shadow:0px 0px 0px #000000;
+    
+    cursor:pointer;
+    
+    transition-property:'box-shadow';
+    transition-duration:0.2s;
+}
+
+#containerRegister form button:hover {
+    box-shadow:3px 3px 2px #616161;
+}

@@ -1,0 +1,66 @@
+@font-face {
+    font-family: bauhaus;
+    src: url('fonts/BAUHS93.TTF');
+}
+
+/* logo Animation */
+@keyframes buttonFirstAnimation {
+    from { transform:translateY(-200px); }
+    to { transform:translateY(0px); }
+}
+
+.buttonFirstAnimation {
+    animation-name:buttonFirstAnimation;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+}
+
+
+header {
+    grid-column:2/3;
+    grid-row:2/3;
+    
+    border-radius:4px;
+    
+    display:grid;
+    grid-template-columns:10% 80% 10%;
+    grid-template-rows:10% 80% 10%;
+}
+
+header .logoName {
+    grid-column:2/3;
+    grid-row:2/3;
+    
+    transform:translateY(-900px);
+    
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+header .logoName a {
+    font-family:'bauhaus', sans-serif;
+    font-family:"bauhaus";
+    font-size:120px;
+    color:#000000;
+    text-shadow:2px 2px 3px transparent;
+    
+    cursor:pointer;
+    
+    transition-property:'text-shadow','font-size';
+    transition-duration:0.3s;
+}
+
+header .logoName a::selection, header .logoName a span::selection {
+    background-color:transparent;
+}
+
+header .logoName a:hover {
+    font-size:125px;
+    text-shadow:2px 2px 3px #000000;
+}
+
+.snakeGreen {
+    color:rgb(0,176,80);
+}

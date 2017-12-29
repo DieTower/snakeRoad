@@ -1,0 +1,66 @@
+/* Universal player's class */
+.player_class {
+    position:absolute;
+    z-index:1;
+}
+
+/* Player number 1 */
+.player1_class {
+    position:absolute;
+    top:55%;
+    left:67%;
+    
+    cursor:pointer;
+    
+    border:2px solid black;
+    border-radius:5px;
+    width:60px;
+    height:60px;
+    
+    padding:5px;
+    
+    background-image:url('../img/default-img.gif');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Player number 2 */
+.player2_class {
+    position:absolute;
+    top:-12%;
+    left:-20%;
+    
+    cursor:pointer;
+    
+    border:2px solid rgb(0,176,80);
+    border-radius:5px;
+    width:60px;
+    height:60px;
+    
+    padding:5px;
+    
+    background-image:url('../img/default-img.gif');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Class dos dois players */
+.player_class span {
+    visibility:hidden;
+}
+
+.playerSpan_class {
+    font-size:0.5em !important;
+}
