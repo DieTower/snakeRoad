@@ -2,10 +2,19 @@ class Life {
     
     constructor() {
         let life = $("#playerStatus_id");
-        $(".yLife_class",this.life).style.width = localStorage.getItem('player1Life') + "%";
+        let playerLifeType = "";
+        
+        if($("#lifePercentagem_id",this.life).classList.contains("player1Life")) {
+            playerLifeType = "player1Life";
+        } else if($("#lifePercentagem_id",this.life).classList.contains("player2Life")) {
+            playerLifeType = "player2Life";
+        };
+        
+        $(".yLife_class",this.life).style.width = localStorage.getItem(playerLifeType) + "%";
         
         setInterval(function() {
-            $("#lifePercentagem_id",this.life).innerHTML = localStorage.getItem("player1Life");
+            $(".player1Life",this.life).innerHTML = localStorage.getItem('player1Life');
+            $(".player2Life",this.life).innerHTML = localStorage.getItem('player2Life');
         }, 1);
         
     }
@@ -40,8 +49,16 @@ class Life {
         let num = parseInt(number);
         let playerLife = $("#lifePercentagem_id",this.life);
         
+        let playerLifeType = "";
+        
+        if($("#lifePercentagem_id",this.life).classList.contains("player1Life")) {
+            playerLifeType = "player1Life";
+        } else if($("#lifePercentagem_id",this.life).classList.contains("player2Life")) {
+            playerLifeType = "player2Life";
+        };
+        
         if(num >= 0 && num <= 100) {
-            localStorage.setItem('player1Life',num);
+            localStorage.setItem(playerLifeType,num);
             //playerLife.innerHTML = num;
         } else {
             console.log("The numbers has need be more of zero or less of hundred");

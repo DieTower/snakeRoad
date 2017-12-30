@@ -91,6 +91,15 @@
     font-weight:400;
 }
 
+.player2Span2 span {
+    padding:5px !important;
+    margin-left:-13px !important;
+    margin-top:5px !important;
+    font-size:1em !important;
+    font-family:'Inconsolata' !important;
+    font-weight:400 !important;
+}
+
 .yourLife_class {
     grid-column:1/4;
     grid-row:3/4;
@@ -221,6 +230,8 @@
 
 .card_class .cardText_class {
     font-family:'Inconsolata';
+    
+    font-size:0.7em;
     
     height:50%;
     margin:4px;

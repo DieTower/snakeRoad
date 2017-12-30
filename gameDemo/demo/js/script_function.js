@@ -11,6 +11,26 @@ function randomBetween(numMin,numMax) {
     return Math.floor(Math.random() * (numMax - numMin)) + numMin;
 }
 
+/* Função para mudar o nome do player dependendo da class que estiver inserida no SPAN */
+function definePlayer() {
+    let playerSpan = $("#thePlayer");
+    
+    if(playerSpan.classList.contains('thePlayer1')) {
+        playerSpan.innerHTML = "Player 1";
+    } else if(playerSpan.classList.contains('thePlayer2')) {
+        playerSpan.innerHTML = "Player 2";
+    };
+}
+
+/* Diz se o Player que se encontra a jogar é o Player1 ou o Player2 ao */
+function getPlayerType() {
+    if($("#thePlayer").classList.contains("thePlayer1")) {
+        return "player1";
+    } else if($("#thePlayer").classList.contains("thePlayer2")) {
+        return "player2";
+    };
+}
+
 function showPlayer2Life() {
     let playerSpan1 = $(".player2Span1");
     let playerSpan2 = $(".player2Span2");

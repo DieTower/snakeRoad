@@ -4,4 +4,5 @@ let id = "#callForAnotherTable_id";
 let button = $(id);
 button.addEventListener("click",function() { testButton(); });
 
+definePlayer();
 showPlayer2Life();
