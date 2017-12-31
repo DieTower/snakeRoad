@@ -48,11 +48,12 @@ class Card {
     
     pullCards(cardId) {
         let classCard = searchClassCard(cardId);
-        let contador = parseInt(searchIdCardNumber(classCard)); console.log(contador);
+        let contador = parseInt(searchIdCardNumber(classCard));
         for(contador; contador<playableCards(); contador++) {
             copyAnotherCard(contador,(contador + 1));
         }
         cards.removeOneCardInHand();
+        cards.refreshData();
     }
     
     copyNextCard(nextCardId) {

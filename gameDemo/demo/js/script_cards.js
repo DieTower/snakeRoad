@@ -9,7 +9,6 @@ class Cards {
         
     }
     
-    
     addOneCardInHand() {
         let lastCardNumber;
         let playerType = this.player + "CardsInHand";
@@ -50,6 +49,17 @@ class Cards {
         }
     }
     
+    refreshData() {
+        let contador;
+        for(contador=1; contador<=playableCards(); contador++) {
+            let card = "#card" + contador + "_id";
+            let cardClass = searchClassCard(card).slice(1);
+            
+            let player = getPlayerType() + "Card" + contador;
+            localStorage.setItem(player,cardClass);
+        }
+    }
+    
     defineCardHandNumber() {
         let cardsNumber;
         let playerType = this.player + "CardsInHand";
@@ -66,7 +76,6 @@ class Cards {
             let cardName = this.player + "Card" + cont;
             let cardClass = localStorage.getItem(cardName);
             $(showCard,this.cards).classList.add(cardClass);
-            
         }
         
         let anotherCards = cardsNumber + 1;
