@@ -2,11 +2,14 @@ class Card {
     
     constructor(num,name,cardText,effect) {
         this.cardNum = parseInt(num);
+        this.cardClass = ".card" + this.cardNum;
+        this.cardId = searchIdCard(this.cardClass.slice(1));
         this.name = name;
         this.text = cardText;
         this.theEffect = effect;
         
-        this.render();
+        setInterval(this.render.bind(this), 1);
+        
         this.attachmentEffect();
     }
     
@@ -14,7 +17,7 @@ class Card {
         let cardClass = "card" + this.cardNum;
         
         let contador;
-        for(contador=1; contador<=8; contador++) {
+        for(contador=1; contador<=playableCards(); contador++) {
             let card = "#card" + contador + "_id";
             
             if($(card).classList.contains(cardClass)) {
@@ -31,10 +34,32 @@ class Card {
         for(contador=1; contador<=8; contador++) {
             let card = "#card" + contador + "_id";
             if($(card).classList.contains(cardClass)) {
-                let theCardClass = "." + cardClass;
-                $(theCardClass).addEventListener("click", this.theEffect);
+                $(classBroker(cardClass)).addEventListener("click",this.clickFunction.bind(this));
             }
         }
+    }
+    
+    clickFunction() {
+        let cardClass = "card" + this.cardNum;
+        
+        this.theEffect();
+        this.pullCards(this.cardId);
+    }
+    
+    pullCards(cardId) {
+        let classCard = searchClassCard(cardId);
+        let contador = parseInt(searchIdCardNumber(classCard)); console.log(contador);
+        for(contador; contador<playableCards(); contador++) {
+            copyAnotherCard(contador,(contador + 1));
+        }
+        cards.removeOneCardInHand();
+    }
+    
+    copyNextCard(nextCardId) {
+        let nextCardClass = searchClassCard(nextCardId);
+        $(this.cardId).classList.remove(this.cardClass.slice(1));
+        $(this.cardId).classList.add(nextCardClass.slice(1));
+        removeCardData(nextCardId);
     }
     
     showName() {
@@ -167,3 +192,26 @@ let card29 = new Card("29","card29","Description from card29", function() {
 let card30 = new Card("30","card30","Description from card30", function() {
     console.log("Hello Friend... this is the card " + card30.cardNum);
 });
+
+
+
+function changeCards(card1,card2) {
+    let cardNum1 = "#card" + card1 + "_id";
+    let cardNum1Class = searchClassCard(cardNum1).slice(1);
+    
+    let cardNum2 = "#card" + card2 + "_id";
+    let cardNum2Class = searchClassCard(cardNum2).slice(1);
+    
+    $(cardNum1).classList.remove(cardNum1Class);
+    $(cardNum1).classList.add(cardNum2Class);
+    
+    $(cardNum2).classList.remove(cardNum2Class);
+    $(cardNum2).classList.add(cardNum1Class);
+}
+
+function removeClass(card1) {
+    let cardNum1 = "#card" + card1 + "_id"; console.log(cardNum1);
+    let cardNum1Class = searchClassCard(cardNum1).slice(1); console.log(cardNum1Class);
+    
+    $(cardNum1).classList.remove(cardNum1Class);
+}

@@ -11,6 +11,112 @@ function randomBetween(numMin,numMax) {
     return Math.floor(Math.random() * (numMax - numMin)) + numMin;
 }
 
+/* Manipulação de dados relativamente às cartas */
+function searchClassCard(elementId) {
+    let idName;
+    
+    if(elementId.slice(0,1) == "#") {
+        idName = elementId;
+    } else {
+        idName = "#" + elementId;
+    };
+    
+    let contador;
+    for(contador=1; contador<=30; contador++) {
+        let classCard = "card" + contador;
+        if($(idName).classList.contains(classCard)) {
+            return "." + classCard;
+        }
+        
+        if($(idName).classList.contains('cardEmpty')) {
+            return ".cardEmpty";
+        }
+    }
+}
+
+function searchIdCard(elementClass) {
+    let className;
+    
+    if(elementClass.slice(0,1) == ".") {
+        className = elementClass.slice(1);
+    } else {
+        className = elementClass;
+    };
+    
+    let contador;
+    for(contador=1; contador<=8; contador++) {
+        let idCard = "#card" + contador + "_id";
+        if($(idCard).classList.contains(className)) {
+            return idCard;
+        }
+    }
+}
+
+function searchIdCardNumber(elementClass) {
+    let className = elementClass;
+    
+    if(elementClass.slice(0,1) == ".") {
+        className = elementClass.slice(1);
+    } else {
+        className = elementClass;
+    };
+    
+    let contador;
+    for(contador=1; contador<=8; contador++) {
+        let idCard = "#card" + contador + "_id";
+        if($(idCard).classList.contains(className)) {
+            return contador;
+        }
+    }
+}
+
+function removeCardData(cardId) {
+    let idName;
+    
+    if(cardId.slice(0,1) == "#") {
+        idName = cardId;
+    } else {
+        idName = "#" + cardId;
+    };
+    
+    let contador;
+    for(contador=1; contador<=30; contador++) {
+        let possibleCard = "card" + contador;
+        if($(idName).classList.contains(possibleCard)) {
+            $(idName).classList.remove(possibleCard);
+        }
+    }
+}
+
+function copyAnotherCard(card1,card2) {
+    let cardNum1 = "#card" + card1 + "_id";
+    let cardNum1Class = searchClassCard(cardNum1).slice(1);
+    
+    let cardNum2 = "#card" + card2 + "_id";
+    let cardNum2Class = searchClassCard(cardNum2).slice(1);
+    
+    $(cardNum1).classList.remove(cardNum1Class);
+    $(cardNum1).classList.add(cardNum2Class);
+    
+    removeCardData(cardNum2);
+    $(cardNum2).classList.add('cardEmpty');
+}
+
+function playableCards() {
+    let playableCardsCount = 0;
+    
+    let contador;
+    for(contador=1; contador<=8; contador++) {
+        let card = "#card" + contador + "_id";
+        if(!$(card).classList.contains('hidden')) {
+            playableCardsCount++;
+        }
+    }
+    
+    return playableCardsCount;
+}
+
+
 /* Função para mudar o nome do player dependendo da class que estiver inserida no SPAN */
 function definePlayer() {
     let playerSpan = $("#thePlayer");
