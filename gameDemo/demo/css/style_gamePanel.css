@@ -268,7 +268,7 @@
     cursor:pointer;
     background-color:#000000;
     
-    transition-property:padding,background-color,font-size;
+    transition-property:'padding','background-color','font-size';
     transition-duration:0.3s;
     transition-delay:none;
 }
@@ -281,8 +281,8 @@
 }
 
 .endPanel_class .buttonEndPhase_class:active {
-    padding:20px;
-    
+    padding:22px;
+    font-size:2.2em;
     border:2px solid #000000;
     Background-color:#ffffff;
     color:#000000;
