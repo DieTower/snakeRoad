@@ -1,6 +1,8 @@
 #dice {
-    grid-column:12/17;
+    grid-column:12/18;
     grid-row:1/4;
+    
+    min-width:310px;
     
     display:flex;
     flex-direction:row;
@@ -11,8 +13,10 @@
 #dice .globalDice {
     z-index:950;
     padding:10px;
-    margin-right:10px;
+    
+    min-width:95px;
     width:95px;
+    min-height:95px;
     height:95px;
     
     background-color:#ffffff;
@@ -43,11 +47,13 @@
 .diceButton {
     z-index:950;
     padding:10px;
-    
-    width:85px;
-    height:85px;
     margin:10px;
     margin-left:0px;
+    
+    min-width:85px;
+    width:85px;
+    min-height:85px;
+    height:85px;
     
     background-color:rgb(255,192,0);
     

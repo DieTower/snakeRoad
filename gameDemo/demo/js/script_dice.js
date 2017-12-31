@@ -6,12 +6,26 @@ class Dice {
     }
     
     events() {
-        
+        $("#diceButton",this.dice).addEventListener("click",this.throwDices.bind(this));
     }
     
     throwDices() {
-        this.throwDice(1);
-        this.throwDice(2);
+        $("#diceButton",this.dice).classList.add('hidden'); // Esconde o botão até ao próximo turno
+        let diceNum1 = this.throwDice(1);
+        let diceNum2 = this.throwDice(2);
+        let sum = parseInt(diceNum1) + parseInt(diceNum2);
+        
+        let player = "." + getPlayerType() + "_class";
+        
+        setTimeout(function() {
+            let intervalo = setInterval(function() { jump(1,player,"true"); }, 300);
+            let totalTime = 300 * sum;
+
+            setTimeout(function() {
+                clearInterval(intervalo);
+            },totalTime);
+        }, 2000);
+        
     }
     
     throwDice(diceNum) {
