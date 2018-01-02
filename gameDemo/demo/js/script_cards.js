@@ -2,11 +2,10 @@ class Cards {
     
     constructor() {
         let cards = $("#cardsPanel_id");
-        this.player = getPlayerType();
+        this.player = localStorage.getItem("playerInGame");
         
         /* Define o numero de cartas que existem na mão de cada jogador */
-        this.defineCardHandNumber();
-        
+        //this.defineCardHandNumber();
     }
     
     addOneCardInHand() {
@@ -62,7 +61,7 @@ class Cards {
     
     defineCardHandNumber() {
         let cardsNumber;
-        let playerType = this.player + "CardsInHand";
+        let playerType = localStorage.getItem("playerInGame") + "CardsInHand";
         
         cardsNumber = parseInt(localStorage.getItem(playerType));
         
@@ -75,6 +74,7 @@ class Cards {
             
             let cardName = this.player + "Card" + cont;
             let cardClass = localStorage.getItem(cardName);
+            this.removeCardData(showCard);
             $(showCard,this.cards).classList.add(cardClass);
         }
         
@@ -90,5 +90,9 @@ class Cards {
     
 }
 
-
 let cards = new Cards();
+
+setInterval(function() {
+    cards.player = localStorage.getItem("playerInGame");
+    cards.defineCardHandNumber();
+}, 1);

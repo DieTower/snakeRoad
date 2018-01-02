@@ -32,6 +32,8 @@ class Button {
         localStorage.setItem('player2CardsInHand','3');
         this.setDataPlayer2Cards();
         
+        /* Game Data */
+        localStorage.setItem('playerInGame','player1');
     }
     
     setDataPlayer1Cards() {

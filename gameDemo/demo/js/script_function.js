@@ -120,12 +120,45 @@ function playableCards() {
 /* Função para mudar o nome do player dependendo da class que estiver inserida no SPAN */
 function definePlayer() {
     let playerSpan = $("#thePlayer");
+    let anotherPlayerSpan = $("#theAnotherPlayer");
+
+    if(localStorage.getItem("playerInGame") == "player1") {
+        playerSpan.innerHTML = "Player 1";
+        anotherPlayerSpan.innerHTML = "Player 2";
+        
+        if(playerSpan.classList.contains('thePlayer2')) {
+           playerSpan.classList.remove('thePlayer2');
+        };
+        
+        playerSpan.classList.add('thePlayer1');
+        
+    } else if(localStorage.getItem("playerInGame") == "player2") {
+        playerSpan.innerHTML = "Player 2";
+        anotherPlayerSpan.innerHTML = "Player 1";
+        
+        if(playerSpan.classList.contains('thePlayer1')) {
+           playerSpan.classList.remove('thePlayer1');
+        };
+        
+        playerSpan.classList.add('thePlayer2');
+    }
+    
+    /*
+    let playerSpan = $("#thePlayer");
+    let anotherPlayerSpan = $("#theAnotherPlayer");
     
     if(playerSpan.classList.contains('thePlayer1')) {
         playerSpan.innerHTML = "Player 1";
+        anotherPlayerSpan.innerHTML = "Player 2";
+        localStorage.setItem("playerInGame","player1");
+        
     } else if(playerSpan.classList.contains('thePlayer2')) {
         playerSpan.innerHTML = "Player 2";
+        anotherPlayerSpan.innerHTML = "Player 1";
+        localStorage.setItem("playerInGame","player2");
+        
     };
+    */
 }
 
 /* Diz se o Player que se encontra a jogar é o Player1 ou o Player2 ao */
