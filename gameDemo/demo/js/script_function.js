@@ -276,7 +276,47 @@ function playerChangeFor(playerType,houseNum) {
     
 };
 
-/* Salta diversas casas antes de chegar há casa final. Atenção, não usar esta função como pode de mover o jogador! */
+function playerChangeForJumpFunction(playerType,houseNum) {
+    
+    /* Descobre onde se encontra o utilizador */
+    let player = classBroker(playerType);
+    let oldHouse = $(player);
+    
+    /* descobrir para onde vai o utilizador */
+    let newHouse;
+    let newPlayerHouse = "#gridHouse" + houseNum + "_id";
+    if(player === ".player1_class") {
+        newHouse = $(newPlayerHouse).children[0];
+    } else {
+        newHouse = $(newPlayerHouse).children[2];
+    };
+    
+    if(houseNum < 45 && 0 < houseNum) {
+        if(searchPlayerHouse(player) !== houseNum) {
+            
+            if(player === ".player1_class") {
+                newHouse.classList.add("player1_class"); //Colocar o utilizador da nova casa
+                oldHouse.classList.remove("player1_class"); //Remover o utilizador da casa anterior
+                //trigedHouses();
+            } else {
+                newHouse.classList.add("player2_class"); //Colocar o utilizador da nova casa
+                oldHouse.classList.remove("player2_class"); //Remover o utilizador da casa anterior
+                //trigedHouses();
+            };
+
+        } else if (searchPlayerHouse(player) === houseNum) {
+            console.log("The houses not be a same!");
+
+        };
+    } else if(houseNum > 44) {
+        console.log("The house number cannot be bigger than 44");
+    } else if(houseNum < 1) {
+        console.log("The house number cannot be smaller than 1");
+    };
+    
+}; // Ignorar completamente esta função, mas não a apaguem!!! Ela tem um proposito!!!
+
+/* Salta diversas casas antes de chegar há casa final. Atenção, não usar esta função como pode de mover o jogador! As casas especiais não são ativadas com o uso destra função*/
 function jump(numberOfHouses,playerType,forwardOrBackward) {
     
     /* Descobre onde se encontra o utilizador */
@@ -294,7 +334,7 @@ function jump(numberOfHouses,playerType,forwardOrBackward) {
             
             while(playerHouse < theNextHouse) {
                 playerHouse++;
-                playerChangeFor(player,playerHouse); // playerType and houseNum
+                playerChangeForJumpFunction(player,playerHouse); // playerType and houseNum
             };
             
         } else {
@@ -311,7 +351,7 @@ function jump(numberOfHouses,playerType,forwardOrBackward) {
             
             while(playerHouse > theNextHouse) {
                 playerHouse--;
-                playerChangeFor(player,playerHouse); // playerType and houseNum
+                playerChangeForJumpFunction(player,playerHouse); // playerType and houseNum
             };
             
         } else {
