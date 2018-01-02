@@ -5,7 +5,7 @@ class Cards {
         this.player = localStorage.getItem("playerInGame");
         
         /* Define o numero de cartas que existem na mão de cada jogador */
-        //this.defineCardHandNumber();
+        this.defineCardHandNumber();
     }
     
     addOneCardInHand() {
