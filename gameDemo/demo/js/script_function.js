@@ -355,10 +355,21 @@ function greenTrigged() {
     let playerName = "." + localStorage.getItem("playerInGame") + "_class";
     let player = $(playerName).parentNode;
     
+    let player1 = $(".player1_class");
+    let player2 = $(".player2_class");
+    
     if(player.classList.contains("greenHouse")) {
-        alert("greenHouse");
+        
+        alert("Green House Effect");
+        
+        player1.classList.add("player2_class");
+        player2.classList.add("player1_class");
+        
+        player2.classList.remove("player2_class");
+        player1.classList.remove("player1_class");
+        
     }
-}
+} // Efeito criado
 
 function trigedHouses() {
     let triged = setInterval(function() {
