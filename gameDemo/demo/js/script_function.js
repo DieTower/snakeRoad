@@ -378,9 +378,10 @@ function redTrigged() {
     let player = $(playerName).parentNode;
     
     if(player.classList.contains("redHouse")) {
-        alert("redHouse");
+        alert("O adeversário ganhou uma nova carta!");
+        cards.addOneCardInOponentHand();
     }
-}
+} // Efeito criado
 
 function blueTrigged() {
     let playerName = "." + localStorage.getItem("playerInGame") + "_class";

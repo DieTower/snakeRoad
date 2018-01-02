@@ -25,6 +25,29 @@ class Cards {
         $(card,this.cards).classList.add(cardName);
     }
     
+    addOneCardInOponentHand() {
+        let lastCardNumber; console.log(this.player);
+        let playerType;
+        
+        if(this.player == "player1") {
+            playerType = "player2CardsInHand";
+        } else if(this.player == "player2") {
+            playerType = "player1CardsInHand";
+        };
+        
+        lastCardNumber = parseInt(localStorage.getItem(playerType)) + 1;
+        localStorage.setItem(playerType,lastCardNumber);
+        
+        let card = "#card" + lastCardNumber + "_id";
+        if($(card).classList.contains('hidden')) {
+            $(card).classList.remove('hidden');
+        }
+        
+        this.removeCardData(card);
+        let cardName = "card" + randomBetween(1,31);
+        $(card,this.cards).classList.add(cardName);
+    }
+    
     removeOneCardInHand() {
         let lastCardNumber;
         let playerType = this.player + "CardsInHand";
