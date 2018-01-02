@@ -116,7 +116,6 @@ function playableCards() {
     return playableCardsCount;
 }
 
-
 /* Função para mudar o nome do player dependendo da class que estiver inserida no SPAN */
 function definePlayer() {
     let playerSpan = $("#thePlayer");
@@ -222,6 +221,157 @@ function playerIdBroker(playerType) {
     };
 };
 
+/* Função para descobrir a casa em que um jogador em particular se encontra */
+function searchPlayerHouse(playerType) {
+    var searchPlayer = $(playerClassBroker(playerType));
+    
+    if(searchPlayer !== "undefined") {
+        let parentName = searchPlayer.parentElement;
+        let getClass = parentName.id;
+        let houseNumber = getClass.substr(9,3).split("_")[0];
+        return houseNumber;
+    } else {
+        console.log("the class you are looking for does not exist!");
+    };
+};
+
+/* Muda o player diretamente para uma casa em especifico */
+function playerChangeFor(playerType,houseNum) {
+    
+    /* Descobre onde se encontra o utilizador */
+    let player = classBroker(playerType);
+    let oldHouse = $(player);
+    
+    /* descobrir para onde vai o utilizador */
+    let newHouse;
+    let newPlayerHouse = "#gridHouse" + houseNum + "_id";
+    if(player === ".player1_class") {
+        newHouse = $(newPlayerHouse).children[0];
+    } else {
+        newHouse = $(newPlayerHouse).children[2];
+    };
+    
+    if(houseNum < 45 && 0 < houseNum) {
+        if(searchPlayerHouse(player) !== houseNum) {
+            
+            if(player === ".player1_class") {
+                newHouse.classList.add("player1_class"); //Colocar o utilizador da nova casa
+                oldHouse.classList.remove("player1_class"); //Remover o utilizador da casa anterior
+                trigedHouses();
+            } else {
+                newHouse.classList.add("player2_class"); //Colocar o utilizador da nova casa
+                oldHouse.classList.remove("player2_class"); //Remover o utilizador da casa anterior
+                trigedHouses();
+            };
+
+        } else if (searchPlayerHouse(player) === houseNum) {
+            console.log("The houses not be a same!");
+
+        };
+    } else if(houseNum > 44) {
+        console.log("The house number cannot be bigger than 44");
+    } else if(houseNum < 1) {
+        console.log("The house number cannot be smaller than 1");
+    };
+    
+};
+
+/* Salta diversas casas antes de chegar há casa final. Atenção, não usar esta função como pode de mover o jogador! */
+function jump(numberOfHouses,playerType,forwardOrBackward) {
+    
+    /* Descobre onde se encontra o utilizador */
+    let player = classBroker(playerType);
+    let oldHouse = $(player);
+    
+    
+    if(forwardOrBackward === "true") {
+        
+        let theNextHouse = parseInt(searchPlayerHouse(player)) + parseInt(numberOfHouses);
+        
+        if(theNextHouse <= 44) {
+            
+            let playerHouse = searchPlayerHouse(player);
+            
+            while(playerHouse < theNextHouse) {
+                playerHouse++;
+                playerChangeFor(player,playerHouse); // playerType and houseNum
+            };
+            
+        } else {
+            console.log("The final house cannot be bigger than 44");
+        };
+        
+    } else {
+        
+        let theNextHouse = parseInt(searchPlayerHouse(player)) - parseInt(numberOfHouses);  
+        
+        if(theNextHouse >= 1) {
+            
+            let playerHouse = searchPlayerHouse(player);
+            
+            while(playerHouse > theNextHouse) {
+                playerHouse--;
+                playerChangeFor(player,playerHouse); // playerType and houseNum
+            };
+            
+        } else {
+            console.log("The final house cannot be smaller than 1");
+        };
+        
+    };
+    
+};
+
+
+/* Efeitos das casas */
+function yellowTrigged() {
+    let playerName = "." + localStorage.getItem("playerInGame") + "_class";
+    let player = $(playerName).parentNode;
+    
+    if(player.classList.contains("yellowHouse")) {
+        alert("yellowHouse");
+    }
+}
+
+function redTrigged() {
+    let playerName = "." + localStorage.getItem("playerInGame") + "_class";
+    let player = $(playerName).parentNode;
+    
+    if(player.classList.contains("redHouse")) {
+        alert("redHouse");
+    }
+}
+
+function blueTrigged() {
+    let playerName = "." + localStorage.getItem("playerInGame") + "_class";
+    let player = $(playerName).parentNode;
+    
+    if(player.classList.contains("blueHouse")) {
+        alert("blueHouse");
+    }
+}
+
+function greenTrigged() {
+    let playerName = "." + localStorage.getItem("playerInGame") + "_class";
+    let player = $(playerName).parentNode;
+    
+    if(player.classList.contains("greenHouse")) {
+        alert("greenHouse");
+    }
+}
+
+function trigedHouses() {
+    let triged = setInterval(function() {
+        yellowTrigged();
+        redTrigged();
+        blueTrigged();
+        greenTrigged();
+    }, 100);
+        
+    setTimeout(function() {clearInterval(triged)}, 100);
+}
+
+
 /* Botão para chamar a tabela de testes */
 function testButton() {
     
@@ -288,110 +438,6 @@ function testButton() {
     };
        
 };
-
-/* Função para descobrir a casa em que um jogador em particular se encontra */
-function searchPlayerHouse(playerType) {
-    var searchPlayer = $(playerClassBroker(playerType));
-    
-    if(searchPlayer !== "undefined") {
-        let parentName = searchPlayer.parentElement;
-        let getClass = parentName.id;
-        let houseNumber = getClass.substr(9,3).split("_")[0];
-        return houseNumber;
-    } else {
-        console.log("the class you are looking for does not exist!");
-    };
-};
-
-/* Muda o player diretamente para uma casa em especifico */
-function playerChangeFor(playerType,houseNum) {
-    
-    /* Descobre onde se encontra o utilizador */
-    let player = classBroker(playerType);
-    let oldHouse = $(player);
-    
-    /* descobrir para onde vai o utilizador */
-    let newHouse;
-    let newPlayerHouse = "#gridHouse" + houseNum + "_id";
-    if(player === ".player1_class") {
-        newHouse = $(newPlayerHouse).children[0];
-    } else {
-        newHouse = $(newPlayerHouse).children[2];
-    };
-    
-    if(houseNum < 45 && 0 < houseNum) {
-        if(searchPlayerHouse(player) !== houseNum) {
-            
-            if(player === ".player1_class") {
-                newHouse.classList.add("player1_class"); // Colocar o utilizador da nova casa
-
-                oldHouse.classList.remove("player1_class"); // Remover o utilizador da casa anterior
-            } else {
-                /* Colocar o utilizador da nova casa */
-                newHouse.classList.add("player2_class");
-
-                /* Remover o utilizador da casa anterior */
-                oldHouse.classList.remove("player2_class");
-            };
-
-        } else if (searchPlayerHouse(player) === houseNum) {
-            console.log("The houses not be a same!");
-
-        };
-    } else if(houseNum > 44) {
-        console.log("The house number cannot be bigger than 44");
-    } else if(houseNum < 1) {
-        console.log("The house number cannot be smaller than 1");
-    };
-    
-};
-
-/* Salta diversas casas antes de chegar há casa final */
-function jump(numberOfHouses,playerType,forwardOrBackward) {
-    
-    /* Descobre onde se encontra o utilizador */
-    let player = classBroker(playerType);
-    let oldHouse = $(player);
-    
-    
-    if(forwardOrBackward === "true") {
-        
-        let theNextHouse = parseInt(searchPlayerHouse(player)) + parseInt(numberOfHouses);
-        
-        if(theNextHouse <= 44) {
-            
-            let playerHouse = searchPlayerHouse(player);
-            
-            while(playerHouse < theNextHouse) {
-                playerHouse++;
-                playerChangeFor(player,playerHouse); // playerType and houseNum
-            };
-            
-        } else {
-            console.log("The final house cannot be bigger than 44");
-        };
-        
-    } else {
-        
-        let theNextHouse = parseInt(searchPlayerHouse(player)) - parseInt(numberOfHouses);  
-        
-        if(theNextHouse >= 1) {
-            
-            let playerHouse = searchPlayerHouse(player);
-            
-            while(playerHouse > theNextHouse) {
-                playerHouse--;
-                playerChangeFor(player,playerHouse); // playerType and houseNum
-            };
-            
-        } else {
-            console.log("The final house cannot be smaller than 1");
-        };
-        
-    };
-    
-};
-
 
 $("#buttonTest").addEventListener("click",function() {
     

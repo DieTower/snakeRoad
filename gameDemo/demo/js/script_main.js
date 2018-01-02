@@ -8,3 +8,9 @@ setInterval(function() {
     definePlayer();
     showPlayer2Life();
 }, 1);
+
+/*
+let triged = setInterval(function() {
+    trigedHouses();
+}, 1);
+*/

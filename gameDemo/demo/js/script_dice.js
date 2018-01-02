@@ -20,9 +20,10 @@ class Dice {
         setTimeout(function() {
             let intervalo = setInterval(function() { jump(1,player,"true"); }, 300);
             let totalTime = 300 * sum;
-
+            
             setTimeout(function() {
                 clearInterval(intervalo);
+                trigedHouses(); // verifica se o player ficou numa casa especial e executa o determinado efeito da mesma
             },totalTime);
         }, 2000);
         
