@@ -99,7 +99,7 @@ function copyAnotherCard(card1,card2) {
     $(cardNum1).classList.add(cardNum2Class);
     
     removeCardData(cardNum2);
-    $(cardNum2).classList.add('cardEmpty');
+    //$(cardNum2).classList.add('cardEmpty');
 }
 
 function playableCards() {
@@ -142,23 +142,6 @@ function definePlayer() {
         
         playerSpan.classList.add('thePlayer2');
     }
-    
-    /*
-    let playerSpan = $("#thePlayer");
-    let anotherPlayerSpan = $("#theAnotherPlayer");
-    
-    if(playerSpan.classList.contains('thePlayer1')) {
-        playerSpan.innerHTML = "Player 1";
-        anotherPlayerSpan.innerHTML = "Player 2";
-        localStorage.setItem("playerInGame","player1");
-        
-    } else if(playerSpan.classList.contains('thePlayer2')) {
-        playerSpan.innerHTML = "Player 2";
-        anotherPlayerSpan.innerHTML = "Player 1";
-        localStorage.setItem("playerInGame","player2");
-        
-    };
-    */
 }
 
 /* Diz se o Player que se encontra a jogar é o Player1 ou o Player2 ao */
