@@ -6,6 +6,7 @@ button.addEventListener("click",function() { testButton(); });
 
 setInterval(function() {
     definePlayer();
+    lifesInRightLocal();
     showPlayer2Life();
 }, 1);
 

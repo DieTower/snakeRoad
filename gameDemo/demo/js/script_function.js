@@ -11,6 +11,36 @@ function randomBetween(numMin,numMax) {
     return Math.floor(Math.random() * (numMax - numMin)) + numMin;
 }
 
+// Muda a vida dos players de sitio em tempo real dependendo do player que estiver a jogar
+function lifesInRightLocal() {
+    let hiddenLife = $("#hiddenLife");
+    let life = $("#lifePercentagem_id");
+    
+    if(localStorage.getItem("playerInGame") == "player1") {
+        if(hiddenLife.classList.contains("player1Life")) {
+            hiddenLife.classList.remove("player1Life");
+            hiddenLife.classList.add("player2Life");
+        }
+        
+        if(life.classList.contains("player2Life")) {
+            life.classList.remove("player2Life");
+            life.classList.add("player1Life");
+            $(".yLife_class",this.life).style.width = localStorage.getItem("player1Life") + "%";
+        }
+    } else if(localStorage.getItem("playerInGame") == "player2") {
+        if(hiddenLife.classList.contains("player2Life")) {
+            hiddenLife.classList.remove("player2Life");
+            hiddenLife.classList.add("player1Life");
+        }
+        
+        if(life.classList.contains("player1Life")) {
+            life.classList.remove("player1Life");
+            life.classList.add("player2Life");
+            $(".yLife_class",this.life).style.width = localStorage.getItem("player2Life") + "%";
+        }
+    }
+}
+
 /* Manipulação de dados relativamente às cartas */
 function searchClassCard(elementId) {
     let idName;
@@ -369,9 +399,56 @@ function yellowTrigged() {
     let player = $(playerName).parentNode;
     
     if(player.classList.contains("yellowHouse")) {
-        alert("yellowHouse");
+        //alert("yellowHouse");
+        
+        let diceNum1 = dice.throwDice(1);
+        let diceNum2 = dice.throwDice(2);
+        let sum = parseInt(diceNum1) + parseInt(diceNum2);
+        let evenOrOdd = sum % 2;
+        
+        setTimeout(function() {
+            let productForFive = sum * 5;
+            
+            if(evenOrOdd == 0) { // even side
+                if(localStorage.getItem("playerInGame") == "player1") {
+                    // vida após a multiplicação dos dados por cinco
+                    supOrNot = parseInt(localStorage.getItem("player2Life")) + productForFive;
+                    
+                    if(supOrNot <= 100) {
+                        localStorage.setItem("player2Life",supOrNot);
+                        alert("The opponentlife was increased.");
+                    } else {
+                        localStorage.setItem("player2Life","100");
+                        alert("The opponent life did not increased, because yours life can't be more of hundred."); console.log("work");
+                    }
+                    
+                } else if(localStorage.getItem("playerInGame") == "player2") {
+                    // vida após a multiplicação dos dados por cinco
+                    supOrNot = parseInt(localStorage.getItem("player1Life")) + productForFive;
+                    
+                    if(supOrNot <= 100) {
+                        localStorage.setItem("player1Life",supOrNot);
+                        alert("The opponentlife was increased.");
+                    } else {
+                        localStorage.setItem("player1Life","100");
+                        alert("The opponent life did not increased, because yours life can't be more of hundred.");
+                    }
+                    
+                }
+            } else if(evenOrOdd == 1) { // odd side
+                if(localStorage.getItem("playerInGame") == "player1") {
+                    life.lessEffectFor(productForFive); console.log("work 2");
+                    alert("Yours life was decreased.");
+                    
+                } else if(localStorage.getItem("playerInGame") == "player2") {
+                    life.lessEffectFor(productForFive);
+                    alert("Yours life was decreased.");
+                    
+                }
+            }
+        }, 2000);
     }
-}
+} // Efeito criado
 
 function redTrigged() {
     let playerName = "." + localStorage.getItem("playerInGame") + "_class";
@@ -390,7 +467,7 @@ function blueTrigged() {
     if(player.classList.contains("blueHouse")) {
         alert("blueHouse");
     }
-}
+} 
 
 function greenTrigged() {
     let playerName = "." + localStorage.getItem("playerInGame") + "_class";
