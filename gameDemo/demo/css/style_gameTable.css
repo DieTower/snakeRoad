@@ -3,6 +3,17 @@
     padding:50px !important;
 }
 
+.theOne {
+    text-shadow:2px 2px 4px #000000 !important;
+    cursor:pointer;
+}
+
+.theOne:hover {
+    text-shadow:3px 3px 10px #000000 !important;
+    border-top:10px solid #000000;
+    border-bottom:10px solid #000000;
+}
+
 .table_class {
     font-size:16px;
     padding:1px;

@@ -57,10 +57,11 @@ function searchClassCard(elementId) {
         if($(idName).classList.contains(classCard)) {
             return "." + classCard;
         }
-        
+        /*
         if($(idName).classList.contains('cardEmpty')) {
             return ".cardEmpty";
         }
+        */
     }
 }
 
@@ -128,7 +129,7 @@ function copyAnotherCard(card1,card2) {
     $(cardNum1).classList.remove(cardNum1Class);
     $(cardNum1).classList.add(cardNum2Class);
     
-    removeCardData(cardNum2);
+    //removeCardData(cardNum2); console.log(searchClassCard("#card2_id")); Cuidado a ausencia do removeCardData() pode dar futuros problemas
     //$(cardNum2).classList.add('cardEmpty');
 }
 
@@ -465,9 +466,31 @@ function blueTrigged() {
     let player = $(playerName).parentNode;
     
     if(player.classList.contains("blueHouse")) {
-        alert("blueHouse");
+        
+        $("#bluePanel_id").classList.remove("hidden");
+        
+        let thePlayer = "." + localStorage.getItem("playerInGame") + "_class";
+        let playerHouse = parseInt(searchPlayerHouse(thePlayer));
+        
+        let optionElement = "";
+        let contador;
+        for(contador=1; contador<playerHouse; contador++) {
+            let theHouse = "#gridHouse" + contador + "_id";
+            let house = $(theHouse);
+            
+            if(!house.classList.contains('yellowHouse') && !house.classList.contains('redHouse') && !house.classList.contains('blueHouse') && !house.classList.contains('greenHouse')) {
+                optionElement = optionElement + "<option value=\"" + contador + "\" >" + contador + "</option>";
+            }
+        }
+        
+        $("#theBlueSelector").innerHTML = optionElement;
+        $("#blueButton").addEventListener("click",function() {
+            let houseComeBack = $("#theBlueSelector").value;
+            playerChangeFor(thePlayer,houseComeBack);
+            $("#bluePanel_id").classList.add("hidden");
+        });
     }
-} 
+} // Efeito criado
 
 function greenTrigged() {
     let playerName = "." + localStorage.getItem("playerInGame") + "_class";
