@@ -512,12 +512,23 @@ function greenTrigged() {
     }
 } // Efeito criado
 
+function lastHouse() {
+    let playerName = "." + localStorage.getItem("playerInGame") + "_class";
+    let player = $(playerName).parentNode;
+    
+    if(player.classList.contains("lastGridHouse")) {
+        alert("The " + localStorage.getItem("playerInGame") + " win the game.");
+    }
+}
+
 function trigedHouses() {
     let triged = setInterval(function() {
         yellowTrigged();
         redTrigged();
         blueTrigged();
         greenTrigged();
+        
+        lastHouse();
     }, 100);
         
     setTimeout(function() {clearInterval(triged)}, 100);
