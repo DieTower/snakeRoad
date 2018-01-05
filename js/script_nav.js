@@ -14,7 +14,7 @@ class Nav {
         $("#closeLoginButton",this.nav).addEventListener("click",this.hiddenLogin.bind(this));
         
         $(".item3",this.nav).addEventListener("click",this.showRegister.bind(this));
-        $(".secondItem3",this.nav).addEventListener("click",this.showLogin.bind(this));
+        $(".secondItem3",this.nav).addEventListener("click",this.showRegister.bind(this));
         $("#closeRegisterButton",this.nav).addEventListener("click",this.hiddenRegister.bind(this));
         
         /* trigged when it is srolled */
