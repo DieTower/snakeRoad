@@ -38,7 +38,20 @@ body {
     grid-template-rows:repeat(6,1fr);
 }
 
+@keyframes firstInitialEffect {
+    from { transform:translateX(-200%); }
+    to { transform:translateX(0%); }
+}
+
+.firstInitialEffect {
+    animation-name:firstInitialEffect;
+    animation-duration:1.7s;
+    animation-fill-mode:forwards;
+}
+
 .buttonContainer {
+    transform:translateX(-200%);
+    
     grid-column:2/3;
     grid-row:3/5;
     
@@ -132,7 +145,20 @@ body {
     align-items:center;
 }
 
+@keyframes secondInitialEffect {
+    from { transform:translateX(-200%); }
+    to { transform:translateX(0%); }
+}
+
+.secondInitialEffect {
+    animation-name:secondInitialEffect;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+}
+
 .back {
+    transform:translateX(-200%);
+    
     position:absolute;
     top:30px;
     left:30px;
