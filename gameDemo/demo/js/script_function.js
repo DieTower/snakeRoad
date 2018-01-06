@@ -518,6 +518,7 @@ function lastHouse() {
     
     if(player.classList.contains("lastGridHouse")) {
         alert("The " + localStorage.getItem("playerInGame") + " win the game.");
+        window.location.href = "../demo.html";
     }
 }
 
