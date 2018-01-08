@@ -218,7 +218,7 @@
     
     height:50%;
     
-    background-image:url("../img/default-img.gif");
+    /* background-image:url("../img/default-img.gif"); */
     background-repeat:no-repeat;
     background-size:cover;
     background-position:center;
