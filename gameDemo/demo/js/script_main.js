@@ -10,8 +10,6 @@ setInterval(function() {
     showPlayer2Life();
 }, 1);
 
-/*
-let triged = setInterval(function() {
-    trigedHouses();
-}, 1);
-*/
+checkLifes(); //Esta função não deve se encontrar dentro de nenhum setInterval pois a mesma já tem um.
+
+

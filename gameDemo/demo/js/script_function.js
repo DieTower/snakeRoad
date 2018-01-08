@@ -11,6 +11,36 @@ function randomBetween(numMin,numMax) {
     return Math.floor(Math.random() * (numMax - numMin)) + numMin;
 }
 
+// Verifica a vida dos jogadores, se alguma das duas chegar a zero o jagodor em questão perde
+function checkLifes() {
+    let lifeTriged = setInterval(function() {
+        let playerClass = "." + localStorage.getItem("playerInGame") + "_class";
+        let player = $(playerClass);
+        let oponent;
+        
+        if(localStorage.getItem("playerInGame") == "player1") {
+            oponent = "player2";
+        } else if(localStorage.getItem("playerInGame") == "player2") {
+            oponent = "player1";
+        }
+        
+        if(parseInt($("#lifePercentagem_id").innerHTML) == 0) {
+            setTimeout(function() {
+                alert("The " + oponent + " won the game.");
+                window.location.href = "../demo.html";
+            }, 1000);
+        clearInterval(lifeTriged);
+    } else if(parseInt($("#hiddenLife").innerHTML) == 0) {
+        setTimeout(function() {
+            alert("The " + localStorage.getItem("playerInGame") + " won the game.");
+            window.location.href = "../demo.html";
+        }, 1000);
+            clearInterval(lifeTriged);
+        }
+        
+    }, 1);
+}
+
 // Muda a vida dos players de sitio em tempo real dependendo do player que estiver a jogar
 function lifesInRightLocal() {
     let hiddenLife = $("#hiddenLife");
@@ -449,7 +479,7 @@ function yellowTrigged() {
             }
         }, 2000);
     }
-} // Efeito criado
+}
 
 function redTrigged() {
     let playerName = "." + localStorage.getItem("playerInGame") + "_class";
@@ -459,7 +489,7 @@ function redTrigged() {
         alert("O adeversário ganhou uma nova carta!");
         cards.addOneCardInOponentHand();
     }
-} // Efeito criado
+}
 
 function blueTrigged() {
     let playerName = "." + localStorage.getItem("playerInGame") + "_class";
@@ -490,7 +520,7 @@ function blueTrigged() {
             $("#bluePanel_id").classList.add("hidden");
         });
     }
-} // Efeito criado
+}
 
 function greenTrigged() {
     let playerName = "." + localStorage.getItem("playerInGame") + "_class";
@@ -510,14 +540,14 @@ function greenTrigged() {
         player1.classList.remove("player1_class");
         
     }
-} // Efeito criado
+}
 
 function lastHouse() {
     let playerName = "." + localStorage.getItem("playerInGame") + "_class";
     let player = $(playerName).parentNode;
     
     if(player.classList.contains("lastGridHouse")) {
-        alert("The " + localStorage.getItem("playerInGame") + " win the game.");
+        alert("The " + localStorage.getItem("playerInGame") + " won the game.");
         window.location.href = "../demo.html";
     }
 }
