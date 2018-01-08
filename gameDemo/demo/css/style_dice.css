@@ -22,7 +22,6 @@
     background-color:#ffffff;
     border:2px solid #000000;
     border-radius:4px;
-    cursor:pointer;
     
     display:grid;
     grid-template-columns:repeat(3,1fr);
