@@ -15,6 +15,12 @@ class Card {
         
         setInterval(this.render.bind(this), 1);
         
+        setInterval(function() {
+            if($(this.cardClass)) {
+                $(this.cardClass).onclick = function() { this.theEffect(); }.bind(this);
+            };
+        }.bind(this), 1);
+        
         this.attachmentEffect();
     }
     
@@ -28,30 +34,34 @@ class Card {
             if($(card).classList.contains(cardClass)) {
                 let theCard = $(card);
                 $(".cardText_class",theCard).innerHTML = this.text;
-                
-                //Fixed the imgage code
-                $(".cardImg_class",theCard).style.backgroundImage = "url('img/cardImg/" + this.cardImg + "')";
             }
         }
+        
+        //Fixed the imgage code
+        $(".cardImg_class",this.element).style.backgroundImage = "url('img/cardImg/" + this.cardImg + "')";
     }
     
     attachmentEffect() {
+        
         let cardClass = "card" + this.cardNum;
         
         let contador;
-        for(contador=1; contador<=8; contador++) {
+        for(contador=1; contador<=playableCards(); contador++) {
             let card = "#card" + contador + "_id";
             if($(card).classList.contains(cardClass)) {
                 $(classBroker(cardClass)).addEventListener("click",this.clickFunction.bind(this));
             }
         }
+        
     }
     
     clickFunction() {
         let cardClass = "card" + this.cardNum;
+        console.log(this.theEffect);
         
-        this.theEffect();
+        //this.theEffect(); //Remover dos comentários caso remova o set interval de testes!
         this.pullCards(this.cardId);
+        //location.reload(); //solução a curto prazo que não funciona na sua totalidade
     }
     
     pullCards(cardId) {
@@ -82,32 +92,105 @@ class Card {
 }
 
 
-let card1 = new Card("1","card1","card0.gif","Description from card1", function() {
+let card1 = new Card("1","card1","card0.gif","Move o ícone do utilizador 5 casas para a frente.", function() {
     console.log("Hello Friend... this is the card " + card1.cardNum);
+    
+    let player = "." + localStorage.getItem("playerInGame") + "_class";
+    let nextHouse = parseInt(searchPlayerHouse(player)) + 5;
+    playerChangeFor(player,nextHouse);
+    
 });
 
-let card2 = new Card("2","card2","card0.gif","Description from card2", function() {
+let card2 = new Card("2","card2","card0.gif","Move o ícone do utilizador 10 casas para a frente.", function() {
     console.log("Hello Friend... this is the card " + card2.cardNum);
+    
+    let player = "." + localStorage.getItem("playerInGame") + "_class";
+    let nextHouse = parseInt(searchPlayerHouse(player)) + 10;
+    playerChangeFor(player,nextHouse);
+    
 });
 
-let card3 = new Card("3","card3","card0.gif","Description from card3", function() {
+let card3 = new Card("3","card3","card0.gif","Move o ícone do adversário 5 casas para trás.", function() {
     console.log("Hello Friend... this is the card " + card3.cardNum);
+    /*
+    let player = "." + getOponentType() + "_class";
+    let nextHouse = parseInt(searchPlayerHouse(player)) - 5;
+    
+    if(nextHouse < 0) {
+        playerChangeFor(player,nextHouse);
+    } else {
+        console.log("O efeito não pode ser executado.");
+    };
+    */
 });
 
-let card4 = new Card("4","card4","card0.gif","Description from card4", function() {
+let card4 = new Card("4","card4","card0.gif","Move o ícone do adversário 10 casas para trás.", function() {
     console.log("Hello Friend... this is the card " + card4.cardNum);
+    
+    let player = "." + getOponentType() + "_class";
+    let nextHouse = parseInt(searchPlayerHouse(player)) - 10;
+    console.log(nextHouse);
+    if(nextHouse < 0) {
+        playerChangeFor(player,nextHouse);
+    } else {
+        console.log("O efeito não pode ser executado.");
+    };
+    
 });
 
-let card5 = new Card("5","card5","card0.gif","Description from card5", function() {
+let card5 = new Card("5","card5","card0.gif","Subtrai 15 pontos de vida á barra de vida do adversário.", function() {
     console.log("Hello Friend... this is the card " + card5.cardNum);
+    
+    let player = "." + getOponentType() + "_class";
+    let lifeBefore = parseInt($("#hiddenLife").innerHTML) - 15;
+    
+    if(lifeBefore >= 0) {
+        $("#hiddenLife").innerHTML = lifeBefore;
+    } else if(lifeBefore < 0) {
+        $("#hiddenLife").innerHTML = "0";
+    }
+    
 });
 
-let card6 = new Card("6","card6","card0.gif","Description from card6", function() {
+let card6 = new Card("6","card6","card0.gif","Soma 15 pontos de vida á barra de vida do utilzador.", function() {
     console.log("Hello Friend... this is the card " + card6.cardNum);
+    
+    life.plusEffectFor(15);
+    
 });
 
-let card7 = new Card("7","card7","card0.gif","Description from card7", function() {
+let card7 = new Card("7","card7","card0.gif","Troca o ícone do utlizador com o ícone do adversário.", function() {
     console.log("Hello Friend... this is the card " + card7.cardNum);
+    
+    let playerName = "." + localStorage.getItem("playerInGame") + "_class";
+    let player = $(playerName).parentNode;
+    
+    if(player.classList.contains("blueHouse")) {
+        
+        $("#bluePanel_id").classList.remove("hidden");
+        
+        let thePlayer = "." + localStorage.getItem("playerInGame") + "_class";
+        let playerHouse = parseInt(searchPlayerHouse(thePlayer));
+        
+        let optionElement = "";
+        let contador;
+        for(contador=1; contador<playerHouse; contador++) {
+            let theHouse = "#gridHouse" + contador + "_id";
+            let house = $(theHouse);
+            
+            if(!house.classList.contains('yellowHouse') && !house.classList.contains('redHouse') && !house.classList.contains('blueHouse') && !house.classList.contains('greenHouse')) {
+                optionElement = optionElement + "<option value=\"" + contador + "\" >" + contador + "</option>";
+            }
+        }
+        
+        $("#theBlueSelector").innerHTML = optionElement;
+        $("#blueButton").addEventListener("click",function() {
+            let houseComeBack = $("#theBlueSelector").value;
+            playerChangeFor(thePlayer,houseComeBack);
+            $("#bluePanel_id").classList.add("hidden");
+        });
+    }
+    
 });
 
 let card8 = new Card("8","card8","card0.gif","Description from card8", function() {

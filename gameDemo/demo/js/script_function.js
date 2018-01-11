@@ -159,7 +159,19 @@ function copyAnotherCard(card1,card2) {
     $(cardNum1).classList.remove(cardNum1Class);
     $(cardNum1).classList.add(cardNum2Class);
     
-    //removeCardData(cardNum2); console.log(searchClassCard("#card2_id")); Cuidado a ausencia do removeCardData() pode dar futuros problemas
+    
+    //cards.defineCardHandNumber();
+    
+    //let number = parseInt(card1) - 1;
+    //console.log($(cardNum1).parentNode.children[number].innerHTML);
+    /*
+    $("#limbo").innerHTML = $(cardNum1).parentNode.children[number].innerHTML;
+    $(cardNum1).parentNode.children[number].innerHTML = " ";
+    $(cardNum1).parentNode.children[number].innerHTML = $("#limbo").innerHTML;
+    $("#limbo").innerHTML = " ";
+    */
+    
+    //removeCardData(cardNum2); //console.log(searchClassCard("#card2_id"));
     //$(cardNum2).classList.add('cardEmpty');
 }
 
@@ -211,6 +223,17 @@ function getPlayerType() {
     } else if($("#thePlayer").classList.contains("thePlayer2")) {
         return "player2";
     };
+}
+
+/* Diz quem é o oponente do jogador em jogo */
+function getOponentType() {
+    
+    if(localStorage.getItem("playerInGame") == "player1") {
+        return "player2";
+    } else if(localStorage.getItem("playerInGame") == "player2") {
+        return "player1";
+    };
+    
 }
 
 function showPlayer2Life() {
@@ -306,12 +329,12 @@ function playerChangeFor(playerType,houseNum) {
     /* descobrir para onde vai o utilizador */
     let newHouse;
     let newPlayerHouse = "#gridHouse" + houseNum + "_id";
-    if(player === ".player1_class") {
+    if(player === ".player1_class" && ((houseNum > 44) && (houseNum < 1))) {
         newHouse = $(newPlayerHouse).children[0];
-    } else {
+    } else if(player === ".player2_class" && ((houseNum > 44) && (houseNum < 1))) {
         newHouse = $(newPlayerHouse).children[2];
     };
-    
+    console.log(houseNum);
     if(houseNum < 45 && 0 < houseNum) {
         if(searchPlayerHouse(player) !== houseNum) {
             
