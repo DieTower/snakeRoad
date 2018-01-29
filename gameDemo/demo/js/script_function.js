@@ -329,9 +329,9 @@ function playerChangeFor(playerType,houseNum) {
     /* descobrir para onde vai o utilizador */
     let newHouse;
     let newPlayerHouse = "#gridHouse" + houseNum + "_id";
-    if(player === ".player1_class" && ((houseNum > 44) && (houseNum < 1))) {
-        newHouse = $(newPlayerHouse).children[0];
-    } else if(player === ".player2_class" && ((houseNum > 44) && (houseNum < 1))) {
+    if(player === ".player1_class" && ((houseNum <= 44) && (houseNum >= 1))) {
+        newHouse = $(newPlayerHouse).children[0]; console.log(newHouse);
+    } else if(player === ".player2_class" && ((houseNum <= 44) && (houseNum >= 1))) {
         newHouse = $(newPlayerHouse).children[2];
     };
     console.log(houseNum);
