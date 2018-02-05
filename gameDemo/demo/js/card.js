@@ -669,7 +669,10 @@ let card25 = new Card("25","card25","card25.jpg","card25 - O player que usar est
     console.log("Hello Friend... this is the card " + card25.cardNum);
     
     cards.addOneCardInHand();
-    cards.addOneCardInHand();
+    
+    setInterval(function(){
+        cards.addOneCardInHand();
+    },100)
     
 });
 
@@ -677,7 +680,10 @@ let card26 = new Card("26","card26","card26.jpg","card26 - O oponente ganha duas
     console.log("Hello Friend... this is the card " + card26.cardNum);
     
     cards.addOneCardInOponentHand();
-    cards.addOneCardInOponentHand();
+    
+    setInterval(function(){
+        cards.addOneCardInOponentHand();
+    },100)
     
 });
 
