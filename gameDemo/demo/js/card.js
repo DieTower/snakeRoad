@@ -435,62 +435,282 @@ let card15 = new Card("15","card15","card15.jpg","card15 - Roda o ícone do dado
 let card16 = new Card("16","card16","card16.png","card16 - Move o ícone do utilizador para a proxima casa especial.", function() {
     console.log("Hello Friend... this is the card " + card16.cardNum);
     
+    let playerName = "." + localStorage.getItem("playerInGame") + "_class";
+    let player = $(playerName).parentNode;
+        
+    //$("#bluePanel_id").classList.remove("hidden");
     
+    let thePlayer = "." + localStorage.getItem("playerInGame") + "_class";
+    let playerHouse = parseInt(searchPlayerHouse(thePlayer));
+    
+    let theHouse;
+    let oldHouse = " ";
+    
+    let loopCont = 0;
+    let contador = playerHouse;
+    while(loopCont != 1) {
+        theHouse = "#gridHouse" + contador + "_id";
+        
+        if(oldHouse == " ") {
+            oldHouse = theHouse;
+        }
+        
+        let house = $(theHouse);
+        
+        if(house.classList.contains('yellowHouse')) {
+            loopCont=1;
+        } else if(house.classList.contains('redHouse')) {
+            loopCont=1;
+        } else if(house.classList.contains('blueHouse')) {
+            loopCont=1;
+        } else if(house.classList.contains('greenHouse')) {
+            loopCont=1;
+        };
+        
+        contador++; console.log(contador);
+    }
+    
+    contador--;
+    
+    if(contador <= 40) {
+        playerChangeFor(thePlayer,contador);
+    } else {
+        alert("Não existe nenhuma casa especial após a casa em que se encontra.");
+    }
     
 });
 
-let card17 = new Card("17","card17","card17.jpg","card17 - O ícone do utilizador move uma casa caso adicione pontos á sua barra de vida.", function() {
+let card17 = new Card("17","card17","card17.jpg","card17 - O player move-se duas casas caso a sua vida seja menor que a vida do adeversário.", function() {
     console.log("Hello Friend... this is the card " + card17.cardNum);
+    
+    //Player in game life
+    let playerInGame = localStorage.getItem("playerInGame") + "Life";
+    let playerLife = parseInt(localStorage.getItem(playerInGame));
+    
+    //Oponent life
+    let oponentInMoment;
+    
+    if(localStorage.getItem("playerInGame") == "player1") {
+        oponentInMoment = "player2Life";
+    } else if(localStorage.getItem("playerInGame") == "player2") {
+        oponentInMoment = "player1Life";
+    }
+    
+    let oponentLife = parseInt(localStorage.getItem(oponentInMoment));
+    
+    if(playerLife < oponentLife) {
+        
+        let player = localStorage.getItem("playerInGame") + "_class";
+        let playerNextHouse = parseInt(searchPlayerHouse(Player)) + 2;
+        
+        if(playerNextHouse > 44) {
+            playerChangeFor(player,44);
+        } else {
+            playerChangeFor(player,playerNextHouse);
+        }
+        
+    } else if(playerLife == oponentLife) {
+        alert("A vida de ambos os jogadores não pode ser igual.");
+    } else if(playerLife > oponentLife) {
+        alert("Éra necessário que a vida do oponent fosse maior que a sua.");
+    }
+    
 });
 
 let card18 = new Card("18","card18","card18.png","card18 - Soma 30 pontos de vida á barra do utilizador.", function() {
     console.log("Hello Friend... this is the card " + card18.cardNum);
+    
+    let player = localStorage.getItem("playerInGame") + "Life";
+    let playerLife = parseInt(localStorage.getItem(player));
+    let playerLifeAfter = playerLife + 30;
+    
+    if(playerLifeAfter >= 100) {
+        life.changeLifeFor(100);
+        $(".yLife_class").style.width = "100%";
+    } else {
+        life.changeLifeFor(playerLifeAfter);
+        $(".yLife_class").style.width = playerLifeAfter + "%";
+    }
+    
 });
 
 let card19 = new Card("19","card19","card19.png","card19 - Subtrai 30 pontos de vida á barra do adversário.", function() {
     console.log("Hello Friend... this is the card " + card19.cardNum);
+    
+    let oponent;
+    if(localStorage.getItem("playerInGame") == "player1") {
+        oponent = "player2Life";
+    } else if(localStorage.getItem("playerInGame") == "player2") {
+        oponent = "player1Life";
+    };
+    
+    let oponentLife = parseInt(localStorage.getItem(oponent));
+    let oponentLifeAfter = oponentLife - 30;
+    
+    if(oponentLifeAfter < 0) {
+        life.changeLifeFor(0);
+        $(".yLife_class").style.width = "0%";
+    } else {
+        life.changeLifeFor(oponentLifeAfter);
+        $(".yLife_class").style.width = oponentLifeAfter + "%";
+    }
+    
 });
 
-let card20 = new Card("20","card20","card20.png","card20 - A barra do utilizador soma (10, 15, 20, 25) pontos de vida dependendo do avanço de casas do adversário comparado com o user.", function() {
+let card20 = new Card("20","card20","card20.png","card20 - A barra do utilizador manipula (-10, 25, 20, -25) pontos de vida correspectivamente, dependendo do numero de cartas na mão do oponente.", function() {
     console.log("Hello Friend... this is the card " + card20.cardNum);
+    
+    let playerInGame = localStorage.getItem("playerInGame") + "Life";
+    
+    let oponent
+    if(playerInGame == "player1") {
+        oponent = "player2CardsInHand";
+    } else if(playerInGame == "player2") {
+        oponent = "player1CardsInHand";
+    }
+    
+    let oponentCardsInHand = localStorage.getItem(oponent);
+    
+    if(oponentCardsInHand == 1) {
+        
+        let oponentLifeAfter = parseInt(localStorage.getItem(playerInGame)) - 10;
+        
+        if(oponentLifeAfter < 0) {
+            life.changeLifeFor(0);
+            $(".yLife_class").style.width = "0%";
+        } else {
+            life.changeLifeFor(oponentLifeAfter);
+            $(".yLife_class").style.width = oponentLifeAfter + "%";
+        }
+        
+    } else if(oponentCardsInHand == 2) {
+        
+        let oponentLifeAfter = parseInt(localStorage.getItem(playerInGame)) + 25;
+        
+        if(oponentLifeAfter >= 100) {
+            life.changeLifeFor(100);
+            $(".yLife_class").style.width = "100%";
+        } else {
+            life.changeLifeFor(oponentLifeAfter);
+            $(".yLife_class").style.width = oponentLifeAfter + "%";
+        }
+        
+    } else if(oponentCardsInHand == 3) {
+        
+        let oponentLifeAfter = parseInt(localStorage.getItem(playerInGame)) + 20;
+        
+        if(oponentLifeAfter >= 100) {
+            life.changeLifeFor(100);
+            $(".yLife_class").style.width = "100%";
+        } else {
+            life.changeLifeFor(oponentLifeAfter);
+            $(".yLife_class").style.width = oponentLifeAfter + "%";
+        }
+        
+    } else if(oponentCardsInHand >= 4) {
+        
+        let oponentLifeAfter = parseInt(localStorage.getItem(playerInGame)) - 25;
+        
+        if(oponentLifeAfter < 0) {
+            life.changeLifeFor(0);
+            $(".yLife_class").style.width = "0%";
+        } else {
+            life.changeLifeFor(oponentLifeAfter);
+            $(".yLife_class").style.width = oponentLifeAfter + "%";
+        }
+        
+    }
+    
 });
 
-let card21 = new Card("21","card6","card21.jpg","card21 - Apresenta as cartas em branco do adversário e dá a escolher uma carta para ser vista pelo utilizador.", function() {
+let card21 = new Card("21","card6","card21.jpg","card21 - Roda o dado duas vezes.", function() {
     console.log("Hello Friend... this is the card " + card21.cardNum);
+    
+    dice.throwDices();
+    
+    setTimeout(function(){
+        dice.throwDices();
+    },2100);
+    
 });
 
-let card22 = new Card("22","card22","card22.jpg","card22 - A barra de vida do utilizador soma 20 pontos de vida caso o adversário mova o ícone do utilizador.", function() {
+let card22 = new Card("22","card22","card22.jpg","card22 - Roda o dado três vezes.", function() {
     console.log("Hello Friend... this is the card " + card22.cardNum);
+    
+    dice.throwDices();
+    
+    setTimeout(function(){
+        dice.throwDices();
+    },2100);
+    
+    setTimeout(function(){
+        dice.throwDices();
+    },4200);
+    
 });
 
-let card23 = new Card("23","card23","card23.jpg","card23 - A barra de vida do adversário subtrai 10 pontos de vida consoante as cartas jogadas pelo mesmo nessa ronda.", function() {
+let card23 = new Card("23","card23","card23.jpg","card23 - O player vai para a casa 11.", function() {
     console.log("Hello Friend... this is the card " + card23.cardNum);
+    
+    let player = localStorage.getItem("playerInGame") + "_class";
+    
+    playerChangeFor(player,11);
+    
 });
 
-let card24 = new Card("24","card24","card24.jpg","card24 - Ativa os efeitos da proxima casa especial.", function() {
+let card24 = new Card("24","card24","card24.jpg","card24 - O player pede uma carta.", function() {
     console.log("Hello Friend... this is the card " + card24.cardNum);
+    
+    cards.removeOneCardInHand();
+    
 });
 
-let card25 = new Card("25","card25","card25.jpg","card25 - Ativa os efeitos da casa especial anterior.", function() {
+let card25 = new Card("25","card25","card25.jpg","card25 - O player que usar esta carta ganha duas cartas.", function() {
     console.log("Hello Friend... this is the card " + card25.cardNum);
+    
+    cards.addOneCardInHand();
+    cards.addOneCardInHand();
+    
 });
 
-let card26 = new Card("26","card26","card26.jpg","card26 - Move o icone do utlizador 3 casas por cada 15 pontos de vida a mais do adversário.", function() {
+let card26 = new Card("26","card26","card26.jpg","card26 - O oponente ganha duas cartas.", function() {
     console.log("Hello Friend... this is the card " + card26.cardNum);
+    
+    cards.addOneCardInOponentHand();
+    cards.addOneCardInOponentHand();
+    
 });
 
-let card27 = new Card("27","card27","card27.jpg","card27 - Ativa a ronda do utlizador ou seja permite lhe rodar o dado e envocar uma carta.", function() {
+let card27 = new Card("27","card27","card27.jpg","card27 - O oponente ganha uma carta.", function() {
     console.log("Hello Friend... this is the card " + card27.cardNum);
+    
+    cards.addOneCardInOponentHand();
+    
 });
 
-let card28 = new Card("28","card28","card28.jpg","card28 - Remove o efeito da casa especial em que o adversário se encontra.", function() {
+let card28 = new Card("28","card28","card28.jpg","card28 - Carta inutil, esta carta não faz absolutamente nada.", function() {
     console.log("Hello Friend... this is the card " + card28.cardNum);
 });
 
 let card29 = new Card("29","card29","card29.png","card29 - Roda o ícone do dado uma vez.", function() {
     console.log("Hello Friend... this is the card " + card29.cardNum);
+    
+    dice.throwDices();
+    
 });
 
-let card30 = new Card("30","card30","card30.jpg","card30 - Quando o adversário rodar o ícone do dado faz com que o adversário nao se mova.", function() {
+let card30 = new Card("30","card30","card30.jpg","card30 - Esta carta faz com que o player que a utilize perca automáticamente o jogo.", function() {
     console.log("Hello Friend... this is the card " + card30.cardNum);
+    
+    let player = localStorage.getItem("playerInGame");
+    
+    let oponent;
+    if(player == "player1") {
+        oponent = "player2_class";
+    } else if(player == "player2") {
+        oponent = "player1_class"
+    }
+    
+    playerChangeFor(oponent,44);
+    
 });
