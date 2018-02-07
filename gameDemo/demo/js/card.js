@@ -428,7 +428,7 @@ let card15 = new Card("15","card15","card15.jpg","card15 - Roda o ícone do dado
     console.log("Hello Friend... this is the card " + card15.cardNum);
     
     dice.throwDices();
-    cards.removeCardInHand();
+    cards.removeCardÓneInHand();
     
 });
 

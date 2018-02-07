@@ -1,6 +1,8 @@
 @font-face {
     font-family: bauhaus;
-    src: url('fonts/BAUHS93.TTF');
+    font-style: normal;
+    font-weight: normal;
+    src: url('fonts/bauhs93.ttf');
 }
 
 @font-face {
